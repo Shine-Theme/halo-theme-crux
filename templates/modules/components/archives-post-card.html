@@ -1,0 +1,75 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-07 13:39:26
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-07 13:39:51
+ * @FilePath: /theme-crux/templates/modules/components/archives-post-card copy.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+
+<div th:fragment="components-archives-post-card(posts)" class="col-span-3 md:col-span-1 bg-white rounded-lg" th:each="post : ${posts}"
+    th:href="${post.status.permalink}">
+    <!-- 用于设置文章封面图时渲染文章封面图 -->
+    <div th:unless="${post.spec.cover.isEmpty()}" class="bg-center bg-cover w-full h-48 rounded-t-lg"
+        th:style="'background-image:url(' + ${post.spec.cover} + ')'">
+        <div
+            class="w-full h-full bg-gradient-to-b from-black/50 to-white/0 rounded-t-lg p-4 pt-6 flex items-start justify-between">
+            <a th:href="${'/authors/' + post.owner.name}" class="flex space-x-2 items-center">
+                <div th:if="${post.owner.avatar}" class="w-6 h-6 rounded-lg bg-center bg-cover"
+                    th:style="'background-image:url(' + ${post.owner.avatar} + ')'">
+                </div>
+                <div th:if="!${post.owner.avatar}" class="i-tabler-user"></div>
+                <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
+            </a>
+            <div class="space-x-1 flex">
+                <a th:each="categorie : ${post.categories}" th:href="${categorie.status.permalink}"
+                    class="bg-black/20 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-box text-white"></div>
+                    <div class="text-xs font-bold text-white" th:text="${categorie.spec.displayName}"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 用于在未设置文章封面图时调用默认封面图 -->
+    <div th:if="${post.spec.cover.isEmpty()}" class="bg-center bg-cover w-full h-48 rounded-t-lg"
+        th:style="'background-image:url(' + ${theme.config.global.default_cover} + ')'">
+        <div
+            class="w-full h-full bg-gradient-to-b from-black/50 to-white/0 rounded-t-lg p-4 pt-6 flex items-start justify-between">
+            <a th:href="${'/authors/' + post.owner.name}" class="flex space-x-2 items-center">
+                <div th:if="${post.owner.avatar}" class="w-6 h-6 rounded-lg bg-center bg-cover"
+                    th:style="'background-image:url(' + ${post.owner.avatar} + ')'">
+                </div>
+                <div th:if="!${post.owner.avatar}" class="i-tabler-user"></div>
+                <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
+            </a>
+            <div class="space-x-1 flex">
+                <a th:each="categorie : ${post.categories}" th:href="${categorie.status.permalink}"
+                    class="bg-black/10 backdrop-brightness-150 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-box text-white"></div>
+                    <div class="text-xs font-bold text-white" th:text="${categorie.spec.displayName}"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 space-y-1">
+        <!-- 文章发布日期 -->
+        <div class="text-xs text-gray-500" th:text="${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd HH:mm')}">
+        </div>
+        <div class="text-2xl font-bold text-gray-900 hover:text-blue-700 hover:underline transition duration-700">
+            <!-- 文章标题 -->
+            <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+        </div>
+        <!-- 文章摘要 -->
+        <p class="text-sm text-gray-500 h-24 line-clamp-5" th:text="${post.status.excerpt}"></p>
+        <!-- 文章跳转链接 -->
+        <div class="w-full">
+            <a th:href="${post.status.permalink}"
+                class="bg-blue-50 hover:bg-blue-500 text-blue-700 hover:text-white transition duration-700 hover:shadow-2xl p-3 py-2  flex items-center justify-center space-x-0 w-full rounded-lg">
+                <div class="text-sm">查看更多</div>
+                <div class="i-tabler-arrow-right"></div>
+            </a>
+        </div>
+    </div>
+</div>

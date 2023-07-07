@@ -1,0 +1,48 @@
+<div class="pt-4 grid grid-cols-10 gap-2">
+    <div class="col-span-10 md:col-span-4 grid grid-rows-2 gap-2 h-52">
+        <div class="row-span-2 md:row-span-1 bg-white rounded-lg p-2 space-y-2">
+            <div class="flex flex-wrap gap-2 max-h-full overflow-auto overflow-x-hidden overflow-y-hidden ">
+                <a th:each="categorie : ${categoryFinder.listAll()}" th:href="${categorie.status.permalink}"
+                    class="bg-green-50 h-fit text-green-700 px-1.5 p-0.5 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-box"></div>
+                    <div class="text-sm break-keep" th:text="${categorie.spec.displayName}"></div>
+                </a>
+            </div>
+        </div>
+        <div class="row-span-2 md:row-span-1 bg-white rounded-lg p-2 space-y-2">
+            <div class="flex flex-wrap gap-2 max-h-full overflow-auto overflow-x-hidden overflow-y-hidden">
+                <a th:each="tag : ${tagFinder.listAll()}" th:href="${tag.status.permalink}"
+                    class="bg-blue-50 h-fit text-blue-700 px-1.5 p-0.5 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-tag"></div>
+                    <div class="text-xs" th:text="${tag.spec.displayName}"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-10 md:col-span-6 gap-2 flex flex-col">
+        <div class="grow w-full h-36 rounded-lg bg-blue-500 p-8 relative">
+            <div class="absolute bottom-4 right-4 flex flex-col justify-end items-end">
+                <div class="text-white text-2xl font-bold" th:text="${site.title}"></div>
+                <div class="text-white text-md text-gray-100 font-bold" th:text="${site.subtitle}"></div>
+                <div class="text-white text-xs text-gray-100" th:if="${theme.config.footer.copyright}"
+                    th:text="${theme.config.footer.copyright}"></div>
+                <div class="text-white text-xs text-gray-100" th:if="${theme.config.footer.system_theme_copyright}">
+                    Powered by <a class="text-white text-xs text-gray-100" href="https://halo.run/">Halo</a> Themed by
+                    <a class="text-white text-xs text-gray-300" href="https://halo.run/">Shine</a>
+                </div>
+                <div class="flex gap-2">
+                    <a class="text-white text-xs text-gray-100" th:if="${theme.config.footer.icp}"
+                        th:href="${theme.config.footer.icp_url}" th:text="${theme.config.footer.icp}"></a>
+                    <a class="text-white text-xs text-gray-100" th:if="${theme.config.footer.beian}"
+                        th:href="${theme.config.footer.beian_url}" th:text="${theme.config.footer.beian}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full rounded-lg bg-white p-2">
+            <div class="flex items-center justify-end gap-1.5 overflow-auto overflow-x-hidden overflow-y-hidden">
+                <th:block th:replace="modules/components/social :: social(socials=${theme.config.footer.socials})">
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>

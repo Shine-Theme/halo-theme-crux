@@ -1,14 +1,43 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2023-07-04 01:28:12
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-06 17:38:48
+ * @FilePath: /theme-crux/templates/modules/layout.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="en" th:fragment="html (content)">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title th:text="${site.title}"></title>
-    <link rel="stylesheet" th:href="@{/assets/dist/style.css}" href="./assets/dist/style.css" />
-    <script th:src="@{/assets/dist/main.iife.js}"></script>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:text="${site.title}"></title>
+  <link rel="stylesheet" th:href="@{/assets/dist/style.css}" href="./assets/dist/style.css" />
+  <link rel="stylesheet" th:href="@{/assets/lightbox/lightbox.css}" href="./assets/lightbox/lightbox.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style>
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <th:block th:replace="~{modules/components/nav::components-nav}"></th:block>
+  <div class="pt-32 p-4 max-w-screen-lg min-h-screen mx-auto ">
     <th:block th:replace="${content}" />
-  </body>
+    <div th:if="${theme.config.footer.footer_type == 'card'}">
+      <th:block th:replace="~{modules/components/footer}"></th:block>
+
+    </div>
+  </div>
+  <div th:if="${theme.config.footer.footer_type == 'basic'}">
+    <th:block th:replace="~{modules/components/footer-basic}">
+    </th:block>
+  </div>
+</body>
+
 </html>

@@ -1,0 +1,51 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-05 14:39:15
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-05 15:23:55
+ * @FilePath: /theme-crux/templates/modules/components/footer-basic.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+<div class="w-full">
+    <div class="w-full h-24 bg-gradient-to-r from-blue-700 to-blue-900 gap-2">
+        <div class="max-w-screen-lg h-full mx-auto">
+            <div class="w-full h-full flex items-center justify-start gap-2 px-4">
+                <div th:unless="${theme.config.footer.emoji.isEmpty()}"
+                    class="h-8 w-8 p-0.5 rounded-lg bg-white flex items-center justify-center">
+                    <div th:text="${theme.config.footer.emoji}"></div>
+                </div>
+                <div th:unless="${theme.config.footer.title.isEmpty()}" class="text-xl text-white font-bold"
+                    th:text="${theme.config.footer.title}"></div>
+                <div th:if="${theme.config.footer.title.isEmpty()}" class="text-xl text-white font-bold"
+                    th:text="${site.title}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full bg-white  py-4">
+        <div class="max-w-screen-lg mx-auto h-full grid grid-cols-2 px-4">
+            <div class="col-span-2 md:col-span-1"></div>
+            <div class="col-span-2 md:col-span-1 space-y-2">
+                <div class=" flex justify-start md:justify-end items-center gap-2">
+                    <th:block th:replace="modules/components/social :: social(socials=${theme.config.footer.socials})">
+                    </th:block>
+                </div>
+                <div class="flex flex-col justify-start md:justify-end items-start md:items-end">
+                    <div class="text-xs  text-gray-400" th:if="${theme.config.footer.copyright}"
+                        th:text="${theme.config.footer.copyright}"></div>
+                    <div class="text-xs  text-gray-400 font-mono" th:if="${theme.config.footer.system_theme_copyright}">
+                        Powered by <a class="text-xs  text-gray-400" href="https://halo.run/">Halo</a> Themed
+                        by <a class="text-xs  text-gray-400" href="https://halo.run/">Shine</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <a class="text-xs  text-gray-400" th:if="${theme.config.footer.icp}"
+                            th:href="${theme.config.footer.icp_url}" th:text="${theme.config.footer.icp}"></a>
+                        <a class="text-xs  text-gray-400" th:if="${theme.config.footer.beian}"
+                            th:href="${theme.config.footer.beian_url}" th:text="${theme.config.footer.beian}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

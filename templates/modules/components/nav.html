@@ -1,0 +1,42 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-04 02:11:35
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-05 15:35:17
+ * @FilePath: /theme-crux/templates/modules/components/nav.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+<div th:fragment="components-nav" id="components-nav" class="w-screen fixed z-50 bg-white/30  backdrop-blur-lg ">
+    <div class="w-full">
+        <div class="w-full flex justify-between items-center p-4 px-4">
+            <div class="flex justify-start items-start gap-2">
+                <div th:unless="${theme.config.nav.emoji.isEmpty()}" class="h-8 w-8 p-0.5 rounded-lg bg-white flex items-center justify-center">
+                    <div th:text="${theme.config.nav.emoji}"></div>
+                </div>
+                <div th:unless="${theme.config.nav.title.isEmpty()}" class="text-xl text-black font-bold"
+                    th:text="${theme.config.nav.title}"></div>
+                <div th:if="${theme.config.nav.title.isEmpty()}" class="text-xl text-black font-bold"
+                    th:text="${site.title}"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div th:if="${pluginFinder.available('PluginSearchWidget')}">
+                    <!-- search mod widget, use ${pluginFinder.available('PluginSearchWidget')} to check if plugin is available -->
+                    <a href="javascript:SearchWidget.open()" title="搜索">
+                        <div class="i-tabler-search"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full border-t p-4 px-4"><!-- nav links -->
+        <div class="w-full flex justify-start items-center space-x-4">
+            <div th:each="menuItem : ${menuFinder.getByName(theme.config.nav.menu).menuItems}">
+                <!-- usual use ${menuFinder.getByName(theme.config.nav.menu).menuItems} to get menu items -->
+                <a class="text-black font-semibold text-sm text-gray-500 hover:shadow-2xl hover:text-blue-700 transition duration-700"
+                    th:href="@{${menuItem.status.href}}" th:text="@{${menuItem.status.displayName}}"></a>
+            </div>
+        </div>
+    </div>
+</div>
