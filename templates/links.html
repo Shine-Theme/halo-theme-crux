@@ -1,0 +1,39 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-05 15:27:38
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-08 00:53:59
+ * @FilePath: /theme-crux/templates/links.html
+ * @Description:  
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
+<th:block th:fragment="content">
+    <div class="w-full grid grid-cols-8 gap-4 py-6 ">
+        <div class="col-span-8 space-y-2">
+            <div class="font-bold text-4xl">友情链接</div>
+            <div class="font-bold text-2xl font-serif italic">#Links</div>
+        </div>
+        <div class="col-span-8 border"></div>
+
+        <th:block th:each="group : ${groups}">
+            <div class="col-span-8 font-bold text-lg text-gray-700" th:text="${group.spec.displayName}" />
+            <a class="col-span-8 md:col-span-4 lg:col-span-4 bg-white rounded-lg p-4 space-y-2 max-h-36" th:each="link : ${group.links}"
+                th:href="${link.spec.url}" target="_blank">
+                <div class="flex items-center gap-2">
+                    <img class="h-8 w-8 p-1.5" th:unless="${link.spec.logo.isEmpty()}" th:src="${link.spec.logo}"
+                        th:alt="${link.spec.displayName}" />
+                    <div th:if="${link.spec.logo.isEmpty()}" class="h-8 w-8 p-1.5 bg-gray-50 rounded-lg">
+                        <th:block th:replace="modules/icon/links"></th:block>
+                    </div>
+                    <div class="font-bold" th:text="${link.spec.displayName}"></div>
+                </div>
+                <p th:if="${link.spec.description}" class="text-xs text-gray-500 line-clamp-2" th:text="${link.spec.description}"></p>
+            </a>
+        </th:block>
+    </div>
+</th:block>
+
+</html>
