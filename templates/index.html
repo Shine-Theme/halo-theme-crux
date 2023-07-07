@@ -1,33 +1,25 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-04 01:28:12
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-07 13:48:59
+ * @FilePath: /theme-crux/templates/index.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
-  <th:block th:fragment="content">
-    <div class="mx-auto flex h-screen w-96 flex-col items-center justify-center">
-      <ul class="w-full list-inside list-disc">
-        <li th:each="post : ${posts.items}">
-          <a
-            th:text="${post.spec.title}"
-            th:href="${post.status.permalink}"
-            class="hover:text-gray-600 hover:underline"
-          ></a>
-        </li>
-      </ul>
-      <div class="mt-6 flex w-full items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">
-        <a
-          th:href="@{${posts.prevUrl}}"
-          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
-        >
-          <span class="i-tabler-arrow-left text-lg transition-all group-hover:-translate-x-1"></span>
-          <span>上一页</span>
-        </a>
-        <span class="text-sm text-gray-900" th:text="${posts.page} +' / '+ ${posts.totalPages}"></span>
-        <a
-          th:href="@{${posts.nextUrl}}"
-          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
-        >
-          <span>下一页</span>
-          <span class="i-tabler-arrow-right text-lg transition-all group-hover:translate-x-1"></span>
-        </a>
-      </div>
+<th:block th:fragment="content">
+  <div class="grid grid-cols-10 gap-4">
+    <th:block th:replace="modules/components/hero"></th:block>
+    <div class="col-span-10 w-full relative">
+      <div class=" text-gray-800 font-bold text-2xl  my-4">文章列表</div>
     </div>
-  </th:block>
+    <div class="col-span-10 grid grid-cols-3 gap-4">
+      <th:block th:replace="modules/components/post-card"></th:block>
+    </div>
+  </div>
+</th:block>
+
 </html>
