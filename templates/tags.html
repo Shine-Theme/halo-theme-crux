@@ -1,0 +1,26 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-05 15:27:38
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-07 13:49:37
+ * @FilePath: /theme-crux/templates/tags.html
+ * @Description:  
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
+<th:block th:fragment="content">
+    <div class="w-full grid grid-cols-8 gap-4 py-6 ">
+        <div class="col-span-8 space-y-2">
+            <div class="font-bold text-4xl">标签合集</div>
+            <div class="font-bold text-2xl font-serif italic">#Tags</div>
+        </div>
+        <div class="col-span-8 border"></div>
+        <a class="col-span-4 md:col-span-2 bg-white rounded-lg p-2 px-2" th:each="tag : ${tags}" th:href="${tag.status.permalink}">
+            <div class="font-bold font-mono to-blue-800 text-2xl">#</div>
+            <div class="font-bold" th:text="${tag.spec.displayName}" />
+        </a>
+    </div>
+</th:block>
+</html>

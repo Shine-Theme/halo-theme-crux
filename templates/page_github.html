@@ -1,0 +1,130 @@
+<!--
+ * @Author: Alkaid(AlkaidMegrez@outlook.com)
+ * @Date: 2023-07-06 16:57:34
+ * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
+ * @LastEditTime: 2023-07-07 13:17:34
+ * @FilePath: /theme-crux/templates/page_github.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Crux, All Rights Reserved. 
+-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
+<th:block th:fragment="content">
+    <div  x-data="github" class="w-full grid grid-cols-8 gap-2 py-6" id="app" x-show="loading">
+        <div class="col-span-10 space-y-2 animate-pulse">
+            <div class="flex items-center gap-4 animate-pulse">
+                <div class="h-16 w-16 rounded-lg bg-gray-200" id="avatar"></div>
+                <div class="animate-pulse space-y-1">
+                    <div class="h-9 w-36 rounded-lg bg-gray-200"></div>
+                    <div class="h-6 w-64 rounded-lg bg-gray-200"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-10 border"></div>
+        
+        <div class="col-span-10 grid grid-cols-3 gap-4 animate-pulse">
+            <div class="col-span-3 md:col-span-1 bg-gray-200 rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800"></div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"></div>
+            </div>
+            <div class="col-span-3 md:col-span-1 bg-gray-200 rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800"></div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"></div>
+            </div>
+            <div class="col-span-3 md:col-span-1 bg-gray-200 rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800"></div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"></div>
+            </div>
+        </div>
+    </div>
+    <div  x-data="github" class="w-full grid grid-cols-8 gap-4 py-6" id="app" x-show="!loading">
+        <div class="col-span-10 space-y-2">
+            <div class="flex items-center gap-2">
+                <img class="h-16 w-16 rounded-lg " id="avatar"
+                    :src="userinfo.avatar_url" />
+                <div class="space-y-1">
+                    <div class="font-bold text-3xl font-mono" x-text="userinfo.name"></div>
+                    <div class="font-bold text-lg font-mono text-gray-500" th:text="${#annotations.get(singlePage, 'username')}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-10 border"></div>
+        <div class="col-span-10 grid grid-cols-3 gap-4">
+            <div class="col-span-3 md:col-span-1 bg-white rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800">Followers</div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"
+                    x-text="userinfo.followers"></div>
+            </div>
+            <div class="col-span-3 md:col-span-1 bg-white rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800">Following</div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"
+                    x-text="userinfo.following"></div>
+            </div>
+            <div class="col-span-3 md:col-span-1 bg-white rounded-lg h-36 p-4 relative">
+                <div class="absolute top-4 left-4 font-mono text-lg text-gray-800">Public repos</div>
+                <div class="absolute bottom-4 right-4 font-mono font-bold text-6xl text-gray-800"
+                    x-text="userinfo.public_repos"></div>
+            </div>
+            <div class="col-span-3 text-2xl font-bold font-mono">
+                # Public repos
+            </div>
+            <template x-for="repo in repos">
+                <div class="col-span-3 md:col-span-1 bg-white rounded-lg h-36 p-4 relative">
+                    <div class="font-mono text-xl text-gray-800 font-bold flex items-center gap-4">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"
+                            id="code-branch">
+                            <path fill="#000000"
+                                d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a3.91 3.91 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06Zm-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1Zm0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z">
+                            </path>
+                        </svg>
+                        <div x-text="repo.name"></div>
+                    </div>
+
+                    <div class="font-mono text-md text-gray-600">
+                        <span>Stars:</span><span x-text="repo.stargazers_count"></span>
+                    </div>
+                    <div class="font-mono text-md text-gray-600">
+                        <span>Forks:</span><span x-text="repo.forks"></span>
+                    </div>
+                    <div class="font-mono text-md text-gray-600">
+                        <span>Watchers:</span><span x-text="repo.watchers"></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+</th:block>
+
+</html>
+<script th:inline="javascript">
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('github', () => ({
+            loading: true,
+            userinfo: {},
+            repos: {},
+            init() {
+                axios.get('https://api.github.com/users/' + [[${ #annotations.get(singlePage, 'username') }]], {
+                    headers: {
+                        Authorization: 'token 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'
+                    }
+                }).then((response) => {
+                    this.userinfo = response.data
+                    axios.get(this.userinfo.repos_url, {
+                        headers: {
+                            Authorization: 'token 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'
+                        }
+                    }).then((response) => {
+                        this.repos = response.data
+                        this.loading =false
+                        
+                    }).catch((error) => {
+                    })
+                }).catch((error) => {
+                })
+
+            }
+        }))
+    })
+</script>
