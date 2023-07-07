@@ -54,6 +54,7 @@
     "vite": "^3.2.4"
   },
   "dependencies": {
-    "alpinejs": "^3.10.5"
+    "alpinejs": "^3.10.5",
+    "vue": "^3.3.4"
   }
 }
