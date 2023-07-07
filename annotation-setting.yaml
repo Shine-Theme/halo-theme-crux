@@ -1,0 +1,137 @@
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "radio"
+      name: "resource"
+      label: "显示文章资源"
+      value: "false"
+      options:
+        - label: "是"
+          value: "true"
+        - label: "否"
+          value: "false"
+    - $formkit: "text"
+      name: "resource_download"
+      label: "文章资源：下载地址"
+    - $formkit: "text"
+      name: "resource_name"
+      label: "文章资源：资源名称"
+    - $formkit: "text"
+      name: "resource_method"
+      label: "文章资源：下载渠道"
+    - $formkit: "text"
+      name: "resource_version"
+      label: "文章资源：版本"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "radio"
+      name: "app"
+      label: "显示APP信息"
+      value: "false"
+      options:
+        - label: "是"
+          value: "true"
+        - label: "否"
+          value: "false"
+    - $formkit: "text"
+      name: "app_name"
+      label: "APP名称"
+    - $formkit: "text"
+      name: "app_version"
+      label: "APP版本"
+    - $formkit: attachment
+      name: app_icon
+      label: APP图标
+      value: ""
+      
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "radio"
+      name: "book"
+      label: "显示书籍信息"
+      value: "false"
+      options:
+        - label: "是"
+          value: "true"
+        - label: "否"
+          value: "false"
+    - $formkit: "text"
+      name: "book_name"
+      label: "书籍名称"
+    - $formkit: "text"
+      name: "book_author"
+      label: "书籍作者"
+    - $formkit: attachment
+      name: book_cover
+      label: 书籍封面
+      accepts:
+        - "image/png"
+        - "image/jpg"
+        - "image/jpge"
+      value: ""
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "radio"
+      name: "login_before_read"
+      label: "登录可见"
+      value: "false"
+      options:
+        - label: "是"
+          value: "true"
+        - label: "否"
+          value: "false"
+    - $formkit: "code"
+      name: "login_before_read_summary"
+      label: "登录可见预览内容"
+      value: ""
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: SinglePage
+  formSchema:
+    - $formkit: "text"
+      name: "username"
+      label: "Github用户名"
+  

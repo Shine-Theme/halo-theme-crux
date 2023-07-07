@@ -1,39 +1,314 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-modern-starter-setting
+  name: theme-crux-setting
 spec:
   forms:
-    - group: post
-      label: 文章
+    - group: nav
+      label: 导航
       formSchema:
-        - $formkit: select
-          name: content_size
-          label: 字体大小
-          value: prose-base
+        - $formkit: text
+          name: title
+          label: 标题
+          value: ""
+        - $formkit: text
+          name: emoji
+          label: 标题旁表情（仅支持一个标准Emoji表情符号）
+          value: ""
+        - $formkit: menuRadio
+          name: menu
+          label: 菜单
+          value: ""
+    - group: index
+      label: 首页
+      formSchema:
+        - $formkit: attachment
+          name: hero
+          label: Banner背景图
+          value: ""
+        - $formkit: text
+          name: title
+          label: 标题
+          value: "Shine"
+        - $formkit: text
+          name: subtitle
+          label: 副标题
+          value: "Like a brilliant summer flower."
+    - group: moments
+      label: 瞬间配置
+      formSchema: 
+        - $formkit: text
+          name: moment_title
+          label: 瞬间标题
+          value: "瞬间"
+        - $formkit: text
+          name: moment_subtitle
+          label: 瞬间副标题
+          value: "Unforgettable Moments"
+        - $formkit: attachment
+          name: avatar
+          label: 头像
+        - $formkit: text
+          name: name
+          label: 昵称
+          value: ""
+        - $formkit: text
+          name: signature
+          label: 签名
+          value: ""
+        - $formkit: repeater
+          name: socials
+          label: 社交账号
+          value: [ ]
+          max: 10
+          min: 1
+          children:
+            - $formkit: select
+              name: type
+              label: 类型
+              value: qq
+              options:
+                - label: QQ
+                  value: qq
+                - label: Github
+                  value: github
+                - label: Email
+                  value: email
+                - label: 钉钉
+                  value: dingtalk
+                - label: 微信
+                  value: wechat
+                - label: telegram
+                  value: telegram
+                - label: 哔哩哔哩
+                  value: bilibili
+                - label: 微博
+                  value: weibo
+                - label: 知乎
+                  value: zhihu
+                - label: 豆瓣
+                  value: douban
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: value
+              label: 值（详细填写内容请参考主题文档）
+              value: ""
+    - group: global
+      label: 全局配置
+      formSchema:
+        - $formkit: attachment
+          name: default_cover
+          label: 默认封面图
+          value: ""
+    - group: personal_about
+      label: 关于 | 个人
+      formSchema:
+        - $formkit: attachment
+          name: avatar
+          label: 头像
+        - $formkit: text
+          name: name
+          label: 昵称
+          value: ""
+        - $formkit: text
+          name: signature
+          label: 签名
+          value: ""
+        - $formkit: repeater
+          name: socials
+          label: 社交账号
+          value: [ ]
+          max: 10
+          min: 1
+          children:
+            - $formkit: select
+              name: type
+              label: 类型
+              value: qq
+              options:
+                - label: QQ
+                  value: qq
+                - label: Github
+                  value: github
+                - label: Email
+                  value: email
+                - label: 钉钉
+                  value: dingtalk
+                - label: 微信
+                  value: wechat
+                - label: telegram
+                  value: telegram
+                - label: 哔哩哔哩
+                  value: bilibili
+                - label: 微博
+                  value: weibo
+                - label: 知乎
+                  value: zhihu
+                - label: 豆瓣
+                  value: douban
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: value
+              label: 值（详细填写内容请参考主题文档）
+              value: ""
+    - group: team_about
+      label: 关于 | 团队
+      formSchema:
+        - $formkit: attachment
+          name: banner
+          label: 背景
+          value: ""
+        - $formkit: text
+          name: name
+          label: 名称
+          value: ""
+        - $formkit: repeater
+          name: members
+          label: 成员
+          value: [ ]
+          max: 10
+          min: 1
+          children:
+            - $formkit: attachment
+              name: avatar
+              label: 头像
+              value: ""
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: position
+              label: 职位
+              value: ""
+
+            - $formkit: repeater
+              name: socials
+              label: 社交账号
+              value: [ ]
+              max: 5
+              min: 1
+              children:
+                - $formkit: select
+                  name: type
+                  label: 类型
+                  value: qq
+                  options:
+                    - label: QQ
+                      value: qq
+                    - label: Github
+                      value: github
+                    - label: Email
+                      value: email
+                    - label: 钉钉
+                      value: dingtalk
+                    - label: 微信
+                      value: wechat
+                    - label: telegram
+                      value: telegram
+                    - label: 网站
+                      value: website
+                - $formkit: text
+                  name: name
+                  label: 名称
+                  value: ""
+                - $formkit: text
+                  name: value
+                  label: 值（详细填写内容请参考主题文档）
+                  value: ""      
+    - group: footer
+      label: 页脚
+      formSchema:
+        - $formkit : radio
+          name: footer_type
+          label: 页脚样式
+          value: 'basic'
           options:
-            - value: prose-base
-              label: prose-base
-            - value: prose-sm
-              label: prose-sm
-            - value: prose-lg
-              label: prose-lg
-            - value: prose-xl
-              label: prose-xl
-            - value: prose-2xl
-              label: prose-2xl
-        - $formkit: select
-          name: content_theme
-          label: 颜色主题
-          value: prose-gray
+            - label: 卡片式
+              value: 'card'
+            - label: 经典
+              value: 'basic'
+        - $formkit: text
+          name: title
+          label: 标题
+          value: ""
+        - $formkit: text
+          name: emoji
+          label: 标题旁表情（仅支持一个标准Emoji表情符号，仅在经典样式下生效）
+          value: ""
+        - $formkit : text
+          name: copyright
+          label: 版权信息
+          value: ""
+        - $formkit : text
+          name: icp
+          label: ICP备案号
+          value: ""
+        - $formkit : text
+          name: beian
+          label: 公安备案号
+          value: ""
+        - $formkit : text
+          name: icp_url
+          label: ICP备案号链接
+          value: ""
+        - $formkit : text
+          name: beian_url
+          label: 公安备案号链接
+          value: ""
+        - $formkit : radio
+          name: system_theme_copyright
+          label: 是否展示Halo以及Shine版权（强烈建议保留）
+          value: true
           options:
-            - value: prose-gray
-              label: prose-gray
-            - value: prose-slate
-              label: prose-slate
-            - value: prose-zinc
-              label: prose-zinc
-            - value: prose-neutral
-              label: prose-neutral
-            - value: prose-stone
-              label: prose-stone
+            - label: 是
+              value: true
+            - label: 否
+              value: false
+        - $formkit: repeater
+          name: socials
+          label: 社交账号
+          value: [ ]
+          max: 3
+          min: 1
+          children:
+            - $formkit: select
+              name: type
+              label: 类型
+              value: qq
+              options:
+                - label: QQ
+                  value: qq
+                - label: Github
+                  value: github
+                - label: Email
+                  value: email
+                - label: 钉钉
+                  value: dingtalk
+                - label: 微信
+                  value: wechat
+                - label: telegram
+                  value: telegram
+                - label: 哔哩哔哩
+                  value: bilibili
+                - label: 微博
+                  value: weibo
+                - label: 知乎
+                  value: zhihu
+                - label: 豆瓣
+                  value: douban
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: value
+              label: 值（详细填写内容请参考主题文档）
+              value: ""
+        

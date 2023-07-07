@@ -1,17 +1,27 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-modern-starter
+  name: theme-crux
 spec:
-  displayName: Modern Starter
+  displayName: Crux
   author:
-    name: Halo OSS Organization
-    website: https://halo.run
-  description: A development starter theme with Vite Ecosystem for Halo
+    name: Alkaid Megrez
+    website: https://alkaid.ink
+  description: A modern and featured theme
   logo: https://halo.run/logo
-  website: https://github.com/halo-dev/theme-modern-starter
-  repo: https://github.com/halo-dev/theme-modern-starter.git
-  settingName: "theme-modern-starter-setting"
-  configMapName: "theme-modern-starter-configMap"
-  version: 1.0.0
+  website: https://theme.alkaid.ink/crux
+  repo: https://github.com/Snuffel233/halo-theme-crux
+  settingName: "theme-crux-setting"
+  configMapName: "theme-crux-configMap"
+  version: 1.0.1
   require: 2.0.0
+  customTemplates:
+    page:
+      - name: 个人介绍页
+        description: 用于展示个人介绍的页面
+        screenshot:
+        file: page_about_personal.html
+      - name: Github项目展示页
+        description: Github项目展示页
+        screenshot:
+        file: page_github.html
