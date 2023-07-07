@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-06 16:57:34
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:17:34
+ * @LastEditTime: 2023-07-07 18:02:23
  * @FilePath: /theme-crux/templates/page_github.html
  * @Description: 
  * 
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
 <th:block th:fragment="content">
-    <div  x-data="github" class="w-full grid grid-cols-8 gap-2 py-6" id="app" x-show="loading">
+    <div x-data="github" class="w-full grid grid-cols-8 gap-2 py-6" id="app" x-show="loading">
         <div class="col-span-10 space-y-2 animate-pulse">
             <div class="flex items-center gap-4 animate-pulse">
                 <div class="h-16 w-16 rounded-lg bg-gray-200" id="avatar"></div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-span-10 border"></div>
-        
+
         <div class="col-span-10 grid grid-cols-3 gap-4 animate-pulse">
             <div class="col-span-3 md:col-span-1 bg-gray-200 rounded-lg h-36 p-4 relative">
                 <div class="absolute top-4 left-4 font-mono text-lg text-gray-800"></div>
@@ -38,14 +38,14 @@
             </div>
         </div>
     </div>
-    <div  x-data="github" class="w-full grid grid-cols-8 gap-4 py-6" id="app" x-show="!loading">
+    <div x-data="github" class="w-full grid grid-cols-8 gap-4 py-6" id="app" x-show="!loading">
         <div class="col-span-10 space-y-2">
             <div class="flex items-center gap-2">
-                <img class="h-16 w-16 rounded-lg " id="avatar"
-                    :src="userinfo.avatar_url" />
+                <img class="h-16 w-16 rounded-lg " id="avatar" :src="userinfo.avatar_url" />
                 <div class="space-y-1">
                     <div class="font-bold text-3xl font-mono" x-text="userinfo.name"></div>
-                    <div class="font-bold text-lg font-mono text-gray-500" th:text="${#annotations.get(singlePage, 'username')}"></div>
+                    <div class="font-bold text-lg font-mono text-gray-500"
+                        th:text="${#annotations.get(singlePage, 'username')}"></div>
                 </div>
             </div>
         </div>
@@ -105,20 +105,20 @@
             userinfo: {},
             repos: {},
             init() {
-                axios.get('https://api.github.com/users/' + [[${ #annotations.get(singlePage, 'username') }]], {
+                axios.get('https://api.github.com/users/' + [[${ #annotations.get(singlePage, 'github_username') }]], {
                     headers: {
-                        Authorization: 'token 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'
+                        Authorization: 'token ' + [[${ #annotations.get(singlePage, 'github_token') }]]
                     }
                 }).then((response) => {
                     this.userinfo = response.data
                     axios.get(this.userinfo.repos_url, {
                         headers: {
-                            Authorization: 'token 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'
+                            Authorization: 'token ' + [[${ #annotations.get(singlePage, 'github_token') }]]
                         }
                     }).then((response) => {
                         this.repos = response.data
-                        this.loading =false
-                        
+                        this.loading = false
+
                     }).catch((error) => {
                     })
                 }).catch((error) => {

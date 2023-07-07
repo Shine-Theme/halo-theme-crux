@@ -132,6 +132,9 @@ spec:
     kind: SinglePage
   formSchema:
     - $formkit: "text"
-      name: "username"
+      name: "github_username"
       label: "Github用户名"
+    - $formkit: "text"
+      name: "github_token"
+      label: "Github Token"
   
