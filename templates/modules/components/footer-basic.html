@@ -2,13 +2,13 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-05 14:39:15
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-05 15:23:55
+ * @LastEditTime: 2023-07-08 18:00:07
  * @FilePath: /theme-crux/templates/modules/components/footer-basic.html
  * @Description: 
  * 
  * Copyright (c) 2023 by Crux, All Rights Reserved. 
 -->
-<div class="w-full">
+<div th:unless="${theme.config.global.health_check}" class="w-full">
     <div class="w-full h-24 bg-gradient-to-r from-blue-700 to-blue-900 gap-2">
         <div class="max-w-screen-lg h-full mx-auto">
             <div class="w-full h-full flex items-center justify-start gap-2 px-4">
