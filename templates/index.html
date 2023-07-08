@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-04 01:28:12
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:48:59
+ * @LastEditTime: 2023-07-08 17:57:21
  * @FilePath: /theme-crux/templates/index.html
  * @Description: 
  * 
@@ -11,7 +11,10 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
 <th:block th:fragment="content">
-  <div class="grid grid-cols-10 gap-4">
+  <div th:if="${theme.config.global.health_check}" class="w-full h-full">
+    <th:block th:replace="modules/components/health-check"></th:block>
+  </div>
+  <div th:unless="${theme.config.global.health_check}" class="grid grid-cols-10 gap-4">
     <th:block th:replace="modules/components/hero"></th:block>
     <div class="col-span-10 w-full relative">
       <div class=" text-gray-800 font-bold text-2xl  my-4">文章列表</div>

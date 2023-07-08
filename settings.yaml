@@ -103,6 +103,15 @@ spec:
           name: default_cover
           label: 默认封面图
           value: ""
+        - $formkit : radio
+          name: health_check
+          label: 是否开启可用性检测
+          value: true
+          options:
+            - label: 是
+              value: true
+            - label: 否
+              value: false
     - group: personal_about
       label: 关于 | 个人
       formSchema:
