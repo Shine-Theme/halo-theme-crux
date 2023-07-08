@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-04 02:11:49
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:34:42
+ * @LastEditTime: 2023-07-08 19:10:35
  * @FilePath: /theme-crux/templates/modules/components/post-card.html
  * @Description: 
  * 
@@ -34,6 +34,11 @@
                 <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
             </a>
             <div class="space-x-1 flex">
+                
+                <div th:if="${post.spec.pinned}"
+                    class="bg-black/10 backdrop-brightness-150 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-pin text-white"></div>
+                </div>
                 <a th:each="categorie : ${post.categories}" th:href="${categorie.status.permalink}"
                     class="bg-black/20 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
                     <div class="i-tabler-box text-white"></div>
@@ -55,6 +60,10 @@
                 <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
             </a>
             <div class="space-x-1 flex">
+                <div th:if="${post.spec.pinned}"
+                    class="bg-black/10 backdrop-brightness-150 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
+                    <div class="i-tabler-pin text-white"></div>
+                </div>
                 <a th:each="categorie : ${post.categories}" th:href="${categorie.status.permalink}"
                     class="bg-black/10 backdrop-brightness-150 backdrop-blur-lg px-1.5 p-1 flex items-center space-x-0.5 w-fit rounded-lg">
                     <div class="i-tabler-box text-white"></div>
