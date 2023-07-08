@@ -2,17 +2,42 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-04 02:11:35
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-05 15:35:17
+ * @LastEditTime: 2023-07-08 18:50:42
  * @FilePath: /theme-crux/templates/modules/components/nav.html
  * @Description: 
  * 
  * Copyright (c) 2023 by Crux, All Rights Reserved. 
 -->
-<div th:fragment="components-nav" id="components-nav" class="w-screen fixed z-50 bg-white/30  backdrop-blur-lg ">
+
+<div th:if="${theme.config.global.health_check}" th:fragment="components-nav" id="components-nav"
+    class="w-screen fixed z-50 bg-white/30  backdrop-blur-lg ">
     <div class="w-full">
         <div class="w-full flex justify-between items-center p-4 px-4">
             <div class="flex justify-start items-start gap-2">
-                <div th:unless="${theme.config.nav.emoji.isEmpty()}" class="h-8 w-8 p-0.5 rounded-lg bg-white flex items-center justify-center">
+                <div
+                    class="h-8 w-8 p-0.5 rounded-lg bg-white flex items-center justify-center">
+                    <div th:text="${theme.config.nav.emoji}">⚙</div>
+                </div>
+                <div class="text-xl text-black font-bold">可用性检测</div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div th:if="${pluginFinder.available('PluginSearchWidget')}">
+                    <!-- search mod widget, use ${pluginFinder.available('PluginSearchWidget')} to check if plugin is available -->
+                    <a href="javascript:SearchWidget.open()" title="搜索">
+                        <div class="i-tabler-search"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:unless="${theme.config.global.health_check}" th:fragment="components-nav" id="components-nav"
+    class="w-screen fixed z-50 bg-white/30  backdrop-blur-lg ">
+    <div class="w-full">
+        <div class="w-full flex justify-between items-center p-4 px-4">
+            <div class="flex justify-start items-start gap-2">
+                <div th:unless="${theme.config.nav.emoji.isEmpty()}"
+                    class="h-8 w-8 p-0.5 rounded-lg bg-white flex items-center justify-center">
                     <div th:text="${theme.config.nav.emoji}"></div>
                 </div>
                 <div th:unless="${theme.config.nav.title.isEmpty()}" class="text-xl text-black font-bold"

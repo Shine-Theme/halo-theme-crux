@@ -54,6 +54,8 @@
     "vite": "^3.2.4"
   },
   "dependencies": {
+    "@iconify-json/heroicons": "^1.1.11",
+    "@iconify-json/uim": "^1.1.5",
     "alpinejs": "^3.10.5",
     "vue": "^3.3.4"
   }
