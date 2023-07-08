@@ -2,15 +2,15 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-07 13:39:26
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:39:51
- * @FilePath: /theme-crux/templates/modules/components/archives-post-card copy.html
+ * @LastEditTime: 2023-07-08 01:02:26
+ * @FilePath: /theme-crux/templates/modules/components/archives-post-card.html
  * @Description: 
  * 
  * Copyright (c) 2023 by Crux, All Rights Reserved. 
 -->
 
-<div th:fragment="components-archives-post-card(posts)" class="col-span-3 md:col-span-1 bg-white rounded-lg" th:each="post : ${posts}"
-    th:href="${post.status.permalink}">
+<div th:fragment="components-archives-post-card(posts)" class="col-span-3 md:col-span-1 bg-white rounded-lg"
+    th:each="post : ${posts}" th:href="${post.status.permalink}">
     <!-- 用于设置文章封面图时渲染文章封面图 -->
     <div th:unless="${post.spec.cover.isEmpty()}" class="bg-center bg-cover w-full h-48 rounded-t-lg"
         th:style="'background-image:url(' + ${post.spec.cover} + ')'">
