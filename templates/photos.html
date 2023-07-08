@@ -20,9 +20,10 @@
 
         <th:block th:each="group : ${groups}">
             <div class="col-span-10 grid grid-cols-3 gap-4">
-                <div class="col-span-3 font-bold text-lg text-gray-700 font-serif" th:text="${group.spec.displayName}"></div>
+                <div class="col-span-3 font-bold text-lg text-gray-700 font-serif" th:text="${group.spec.displayName}">
+                </div>
                 <div class="col-span-3 w-full flex gap-2 snap-x overflow-auto max-w-full rounded-lg">
-                    
+
                     <img th:each="photo : ${group.photos}"
                         class="snap-start relative h-48 rounded-lg shadow-xl bg-white" th:src="${photo.spec.url}"
                         th:alt="${photo.spec.displayName}">

@@ -86,12 +86,13 @@
                 </div>
               </div>
               <div class="space-x-1 flex">
-                <a th:unless="${post.categories.size() == 0}" th:each="categorie : ${post.categories}" th:href="${categorie.status.permalink}"
+                <a th:unless="${post.categories.size() == 0}" th:each="categorie : ${post.categories}"
+                  th:href="${categorie.status.permalink}"
                   class="bg-black/10 backdrop-blur-lg backdrop-brightness-150 text-green-100 px-1.5 p-0.1 flex items-center space-x-0.5 w-fit rounded-lg">
                   <div class="i-tabler-box"></div>
                   <div class="text-xs" th:text="${categorie.spec.displayName}"></div>
                 </a>
-                <a th:unless="${post.tags.size() == 0}"  th:each="tag : ${post.tags}" th:href="${tag.status.permalink}"
+                <a th:unless="${post.tags.size() == 0}" th:each="tag : ${post.tags}" th:href="${tag.status.permalink}"
                   class="bg-black/10 backdrop-blur-lg backdrop-brightness-150 text-blue-100 px-1.5 p-0.5 flex items-center space-x-0.5 w-fit rounded-lg">
                   <div class="i-tabler-tag"></div>
                   <div class="text-xs" th:text="${tag.spec.displayName}"></div>

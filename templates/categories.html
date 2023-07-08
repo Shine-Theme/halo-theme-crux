@@ -17,10 +17,12 @@
             <div class="font-bold text-2xl font-serif italic">#Categories</div>
         </div>
         <div class="col-span-8 border"></div>
-        <a class="col-span-4 md:col-span-2 bg-white rounded-lg p-2 px-2" th:each="category : ${categories}" th:href="${category.status.permalink}">
+        <a class="col-span-4 md:col-span-2 bg-white rounded-lg p-2 px-2" th:each="category : ${categories}"
+            th:href="${category.status.permalink}">
             <div class="font-bold font-mono to-blue-800 text-2xl">#</div>
             <div class="font-bold" th:text="${category.spec.displayName}" />
         </a>
     </div>
 </th:block>
+
 </html>

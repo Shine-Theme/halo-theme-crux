@@ -20,8 +20,8 @@
 
         <th:block th:each="group : ${groups}">
             <div class="col-span-8 font-bold text-lg text-gray-700" th:text="${group.spec.displayName}" />
-            <a class="col-span-8 md:col-span-4 lg:col-span-4 bg-white rounded-lg p-4 space-y-2 max-h-36" th:each="link : ${group.links}"
-                th:href="${link.spec.url}" target="_blank">
+            <a class="col-span-8 md:col-span-4 lg:col-span-4 bg-white rounded-lg p-4 space-y-2 max-h-36"
+                th:each="link : ${group.links}" th:href="${link.spec.url}" target="_blank">
                 <div class="flex items-center gap-2">
                     <img class="h-8 w-8 p-1.5" th:unless="${link.spec.logo.isEmpty()}" th:src="${link.spec.logo}"
                         th:alt="${link.spec.displayName}" />
@@ -30,7 +30,8 @@
                     </div>
                     <div class="font-bold" th:text="${link.spec.displayName}"></div>
                 </div>
-                <p th:if="${link.spec.description}" class="text-xs text-gray-500 line-clamp-2" th:text="${link.spec.description}"></p>
+                <p th:if="${link.spec.description}" class="text-xs text-gray-500 line-clamp-2"
+                    th:text="${link.spec.description}"></p>
             </a>
         </th:block>
     </div>
