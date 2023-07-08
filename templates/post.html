@@ -2,6 +2,12 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
 <th:block th:fragment="content">
   <div class="grid grid-cols-10 gap-4">
+    <div class="col-span-10 md:hidden toc-container-mobile p-4 rounded-lg bg-white space-y-2">
+      <div class="text-md text-gray-700 font-bold">文章目录</div>
+      <div class="border-t"></div>
+      <div class="toc-mobile flex justify-start items-start space-x-4">
+      </div>
+    </div>
     <div class="col-span-10 md:col-span-7">
       <div class="md:hidden rounded-lg">
         <img class="w-full rounded-lg" th:if="${not #strings.isEmpty(post.spec.cover)}"
@@ -102,12 +108,12 @@
           </div>
         </div>
         <article th:unless="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser'}"
-          class="prose !max-w-none p-4 md:p-8"
+          class="prose !max-w-none p-4 md:p-8" id="content"
           th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}">
           <th:block th:utext="${post.content.content}"></th:block>
         </article>
         <article th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
-          class="prose !max-w-none p-4 md:p-8"
+          class="prose !max-w-none p-4 md:p-8" id="content"
           th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}">
           <th:block th:utext="${#annotations.get(post, 'login_before_read_summary')}"></th:block>
         </article>
@@ -144,6 +150,13 @@
         <img class="w-full rounded-lg" th:unless="${post.spec.cover.isEmpty}"
           th:src="${theme.config.global.default_cover}"></img>
       </div>
+
+      <div class="hidden md:block toc-container p-4 rounded-lg bg-white space-y-2">
+        <div class="text-md text-gray-700 font-bold">文章目录</div>
+        <div class="border-t"></div>
+        <div class="toc flex justify-start items-start space-x-4">
+        </div>
+      </div>
       <div th:if="${#annotations.get(post, 'app')}" class="w-full p-4 rounded-lg bg-white space-y-2">
         <div class="text-md text-gray-700 font-bold">APP资源</div>
         <div class="border-t"></div>
@@ -177,9 +190,12 @@
           <div class="text-sm font-bold " th:text="${#annotations.get(post, 'resource_method')}"></div>
         </a>
       </div>
-    </div>
-
+    </div
   </div>
+  <script>
+    main.generateToc('content','toc-container','toc')
+    main.generateToc('content','toc-container-mobile','toc-mobile')
+  </script>
 </th:block>
 
 </html>

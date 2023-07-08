@@ -14,6 +14,9 @@ dependencies:
   alpinejs:
     specifier: ^3.10.5
     version: 3.10.5
+  tocbot:
+    specifier: ^4.21.0
+    version: 4.21.0
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -1829,6 +1832,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /tocbot@4.21.0:
+    resolution: {integrity: sha512-vXk8htr8mIl3hc2s2mDkaPTBfqmqZA2o0x7eXbxUibdrpEIPdpM0L9hH/RvEvlgSM+ZTgS34sGipk5+VrLJCLA==}
+    dev: false
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
