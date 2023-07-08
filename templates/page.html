@@ -5,11 +5,11 @@
   <div class="grid grid-cols-10 gap-4">
     
     <div class="col-span-10 md:hidden toc-container-mobile p-4 rounded-lg bg-white space-y-2">
-        <div class="text-md text-gray-700 font-bold">文章目录</div>
-        <div class="border-t"></div>
-        <div class="toc-mobile flex justify-start items-start space-x-4">
-        </div>
+      <div class="text-md text-gray-700 font-bold">文章目录</div>
+      <div class="border-t"></div>
+      <div class="toc-mobile flex justify-start items-start space-x-4">
       </div>
+    </div>
     <div class="col-span-10 md:col-span-7">
       <div class="md:hidden rounded-lg">
         <img class="w-full rounded-lg" th:if="${not #strings.isEmpty(singlePage.spec.cover)}"
@@ -109,6 +109,16 @@
           th:src="${theme.config.global.default_cover}"></img>
       </div>
 
+      <div class="hidden md:block toc-container p-4 rounded-lg bg-white space-y-2">
+        <div class="text-md text-gray-700 font-bold">文章目录</div>
+        <div class="border-t"></div>
+        <div class="toc flex justify-start items-start space-x-4">
+          <div class="space-y-1 dark:border-slate-500"></div>
+          <div
+            class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 text-sm opacity-80 dark:hover:bg-slate-700 dark:text-slate-50">
+          </div>
+        </div>
+      </div>
       <div class="toc-container hidden md:block w-full p-4 rounded-lg bg-white space-y-2">
         <div class="text-md text-gray-700 font-bold">文章目录</div>
         <div class="border-t"></div>
