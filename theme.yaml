@@ -8,7 +8,7 @@ spec:
     name: Alkaid Megrez
     website: https://alkaid.ink
   description: A modern and featured theme
-  logo: https://halo.run/logo
+  logo: https://alkaid.ink/upload/logo-crux.png
   website: https://theme.alkaid.ink/crux
   repo: https://github.com/Snuffel233/halo-theme-crux
   settingName: "theme-crux-setting"
