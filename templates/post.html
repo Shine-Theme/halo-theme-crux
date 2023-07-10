@@ -196,6 +196,7 @@
       </div>
     </div>
   </div>
+  <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
   <script>
     main.generateToc('content', 'toc-container', 'toc')
     main.generateToc('content', 'toc-container-mobile', 'toc-mobile')
