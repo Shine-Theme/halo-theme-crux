@@ -19,6 +19,10 @@ spec:
           name: menu
           label: 菜单
           value: ""
+        - $formkit: menuRadio
+          name: submenu
+          label: 副菜单
+          value: ""
     - group: index
       label: 首页
       formSchema:
