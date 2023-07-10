@@ -57,6 +57,7 @@
     "@iconify-json/heroicons": "^1.1.11",
     "@iconify-json/uim": "^1.1.5",
     "alpinejs": "^3.10.5",
+    "axios": "^1.4.0",
     "tocbot": "^4.21.0",
     "vue": "^3.3.4"
   }
