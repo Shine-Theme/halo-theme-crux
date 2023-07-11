@@ -10,17 +10,21 @@
 -->
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
-<th:block th:fragment="content">
-    <div class="w-full grid grid-cols-8 gap-4 py-6 ">
-        <div class="col-span-8 space-y-2">
-            <div class="font-bold text-4xl">标签合集</div>
-            <div class="font-bold text-2xl font-serif italic">#Tags</div>
-        </div>
-        <div class="col-span-8 border"></div>
-        <a class="col-span-4 md:col-span-2 bg-white rounded-lg p-2 px-2" th:each="tag : ${tags}" th:href="${tag.status.permalink}">
-            <div class="font-bold font-mono to-blue-800 text-2xl">#</div>
-            <div class="font-bold" th:text="${tag.spec.displayName}" />
-        </a>
+  <th:block th:fragment="content">
+    <div class="grid w-full grid-cols-8 gap-4 py-6">
+      <div class="col-span-8 space-y-2">
+        <div class="text-4xl font-bold">标签合集</div>
+        <div class="font-serif text-2xl font-bold italic">#Tags</div>
+      </div>
+      <div class="col-span-8 border"></div>
+      <a
+        class="col-span-4 rounded-lg bg-white p-2 px-2 md:col-span-2"
+        th:each="tag : ${tags}"
+        th:href="${tag.status.permalink}"
+      >
+        <div class="to-blue-800 font-mono text-2xl font-bold">#</div>
+        <div class="font-bold" th:text="${tag.spec.displayName}" />
+      </a>
     </div>
-</th:block>
+  </th:block>
 </html>

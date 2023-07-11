@@ -10,17 +10,16 @@
 -->
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
-<th:block th:fragment="content">
-    <div class="w-full grid grid-cols-8 gap-4 py-6 ">
-        <div class="col-span-8 space-y-2">
-            <div class="font-bold text-4xl" th:text="${author.spec.displayName}"></div>
-            <div class="font-bold text-2xl font-serif italic">#Author</div>
-        </div>
-        <div class="col-span-8 border"></div>
-        <div class="col-span-10 grid grid-cols-3 gap-4">
-            <th:block th:replace="modules/components/post-card"></th:block>
-        </div>
+  <th:block th:fragment="content">
+    <div class="grid w-full grid-cols-8 gap-4 py-6">
+      <div class="col-span-8 space-y-2">
+        <div class="text-4xl font-bold" th:text="${author.spec.displayName}"></div>
+        <div class="font-serif text-2xl font-bold italic">#Author</div>
+      </div>
+      <div class="col-span-8 border"></div>
+      <div class="col-span-10 grid grid-cols-3 gap-4">
+        <th:block th:replace="modules/components/post-card"></th:block>
+      </div>
     </div>
-</th:block>
-
+  </th:block>
 </html>

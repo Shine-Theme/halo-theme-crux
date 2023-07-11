@@ -1,38 +1,52 @@
 {
-  "name": "@halo-dev/theme-modern-starter",
-  "private": true,
-  "version": "0.0.0",
-  "description": "A development starter theme with modern front-end technology stack for Halo",
+  "name": "halo-theme-crux",
+  "private": false,
+  "version": "1.1.2",
+  "description": "A modern minimalist halo theme",
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
+    "changeLog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
   "keywords": [
     "halo",
-    "halo-theme"
+    "halo-theme",
+    "shine-theme",
+    "crux"
   ],
-  "homepage": "https://github.com/halo-dev/theme-modern-starter#readme",
+  "homepage": "https://github.com/Shine-Theme/halo-theme-crux",
   "bugs": {
     "url": "https://github.com/halo-dev/theme-modern-starter/issues"
   },
   "author": {
-    "name": "Halo OSS Organization",
-    "url": "https://github.com/halo-dev",
-    "email": "hi@halo.run"
+    "name": "Shine Theme Team",
+    "url": "https://github.com/Shien-Theme",
+    "email": "AlkaidMegrez@outlook.com"
   },
   "maintainers": [
     {
-      "name": "Ryan Wang",
-      "url": "https://github.com/ruibaby",
-      "email": "i@ryanc.cc"
+      "name": "Alkaid Megrez",
+      "url": "https://github.com/Snuffel233",
+      "email": "AlkaidMegrez@outlook.com"
     }
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
-    "url": "https://github.com/halo-dev/theme-modern-starter",
+    "url": "https://github.com/Shine-Theme/halo-theme-crux",
     "type": "git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run changelog && npm run lint && npm run prettier"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "useEmoji": true
+    }
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.47",
@@ -42,6 +56,8 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "autoprefixer": "^10.4.13",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-git": "^1.7.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -58,6 +74,10 @@
     "@iconify-json/uim": "^1.1.5",
     "alpinejs": "^3.10.5",
     "axios": "^1.4.0",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-cli": "^3.0.0",
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0",
     "tocbot": "^4.21.0",
     "vue": "^3.3.4"
   }
