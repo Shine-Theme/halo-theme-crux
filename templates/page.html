@@ -4,7 +4,7 @@
 <th:block th:fragment="content">
   <div class="grid grid-cols-10 gap-4">
     
-    <div class="col-span-10 md:hidden toc-container-mobile p-4 rounded-lg bg-white space-y-2">
+    <div x-data="toc" x-init="generateToc('content','toc-container-mobile','toc-mobile')" class="col-span-10 md:hidden toc-container-mobile p-4 rounded-lg bg-white space-y-2">
       <div class="text-md text-gray-700 font-bold">文章目录</div>
       <div class="border-t"></div>
       <div class="toc-mobile flex justify-start items-start space-x-4">
@@ -119,18 +119,13 @@
           </div>
         </div>
       </div>
-      <div class="toc-container hidden md:block w-full p-4 rounded-lg bg-white space-y-2">
+      <div x-data="toc" x-init="generateToc('content','toc-container','toc')" class="toc-container hidden md:block w-full p-4 rounded-lg bg-white space-y-2">
         <div class="text-md text-gray-700 font-bold">文章目录</div>
         <div class="border-t"></div>
         <div class="toc"></div>
       </div>
     </div>
   </div>
-  <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
-  <script>
-    main.generateToc('content', 'toc-container', 'toc')
-    main.generateToc('content', 'toc-container-mobile', 'toc-mobile')
-  </script>
 </th:block>
 
 </html>
