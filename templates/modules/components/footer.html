@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-07 18:00:15
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-08 18:00:01
+ * @LastEditTime: 2023-07-11 20:26:43
  * @FilePath: /theme-crux/templates/modules/components/footer.html
  * @Description: 
  * 
@@ -10,7 +10,7 @@
 -->
 <div th:unless="${theme.config.global.health_check}" class="grid grid-cols-10 gap-2 pt-4">
   <div class="col-span-10 grid h-52 grid-rows-2 gap-2 md:col-span-4">
-    <div class="row-span-2 space-y-2 rounded-lg bg-white p-2 md:row-span-1">
+    <div class="row-span-2 space-y-2 rounded-lg bg-white p-2 transition duration-700 dark:bg-slate-700 md:row-span-1">
       <div class="flex max-h-full flex-wrap gap-2 overflow-auto overflow-x-hidden overflow-y-hidden">
         <a
           th:each="categorie : ${categoryFinder.listAll()}"
@@ -22,7 +22,7 @@
         </a>
       </div>
     </div>
-    <div class="row-span-2 space-y-2 rounded-lg bg-white p-2 md:row-span-1">
+    <div class="row-span-2 space-y-2 rounded-lg bg-white p-2 transition duration-700 dark:bg-slate-700 md:row-span-1">
       <div class="flex max-h-full flex-wrap gap-2 overflow-auto overflow-x-hidden overflow-y-hidden">
         <a
           th:each="tag : ${tagFinder.listAll()}"
@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full rounded-lg bg-white p-2">
+    <div class="w-full rounded-lg bg-white p-2 transition duration-700 dark:bg-slate-700">
       <div class="flex items-center justify-end gap-1.5 overflow-auto overflow-x-hidden overflow-y-hidden">
         <th:block th:replace="modules/components/social :: social(socials=${theme.config.footer.socials})"> </th:block>
       </div>

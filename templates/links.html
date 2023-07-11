@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-05 15:27:38
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-08 00:53:59
+ * @LastEditTime: 2023-07-11 19:59:53
  * @FilePath: /theme-crux/templates/links.html
  * @Description:  
  * 
@@ -13,34 +13,40 @@
   <th:block th:fragment="content">
     <div class="grid w-full grid-cols-8 gap-4 py-6">
       <div class="col-span-8 space-y-2">
-        <div class="text-4xl font-bold">友情链接</div>
-        <div class="font-serif text-2xl font-bold italic">#Links</div>
+        <div class="text-4xl font-bold transition duration-700 dark:text-slate-100">友情链接</div>
+        <div class="font-serif text-2xl font-bold italic transition duration-700 dark:text-slate-100">#Links</div>
       </div>
       <div class="col-span-8 border"></div>
 
       <th:block th:each="group : ${groups}">
-        <div class="col-span-8 text-lg font-bold text-gray-700" th:text="${group.spec.displayName}" />
+        <div
+          class="col-span-8 text-lg font-bold text-gray-700 transition duration-700 dark:text-slate-200"
+          th:text="${group.spec.displayName}"
+        />
         <a
-          class="col-span-8 max-h-36 space-y-2 rounded-lg bg-white p-4 md:col-span-4 lg:col-span-4"
+          class="col-span-8 max-h-36 space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 dark:text-slate-100 md:col-span-4 lg:col-span-4"
           th:each="link : ${group.links}"
           th:href="${link.spec.url}"
           target="_blank"
         >
           <div class="flex items-center gap-2">
             <img
-              class="h-8 w-8 p-1.5"
+              class="h-8 w-8 rounded-lg"
               th:unless="${link.spec.logo.isEmpty()}"
               th:src="${link.spec.logo}"
               th:alt="${link.spec.displayName}"
             />
-            <div th:if="${link.spec.logo.isEmpty()}" class="h-8 w-8 rounded-lg bg-gray-50 p-1.5">
-              <th:block th:replace="modules/icon/links"></th:block>
+            <div
+              th:if="${link.spec.logo.isEmpty()}"
+              class="h-8 w-8 rounded-lg bg-gray-50 p-1.5 transition duration-700 dark:bg-slate-600 dark:text-slate-100"
+            >
+              <div class="i-heroicons-link !h-full !w-full"></div>
             </div>
             <div class="font-bold" th:text="${link.spec.displayName}"></div>
           </div>
           <p
             th:if="${link.spec.description}"
-            class="line-clamp-2 text-xs text-gray-500"
+            class="line-clamp-2 text-xs text-gray-500 transition duration-700 dark:text-slate-300"
             th:text="${link.spec.description}"
           ></p>
         </a>

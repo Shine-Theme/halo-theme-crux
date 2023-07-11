@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-04 14:27:54
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-11 14:35:48
+ * @LastEditTime: 2023-07-11 20:03:25
  * @FilePath: /theme-crux/templates/moments.html
  * @Description: 
  * 
@@ -16,7 +16,9 @@
         class="col-span-10 flex h-36 w-full items-end rounded-lg bg-cover bg-center"
         th:style="'background-image:url(' + ${theme.config.index.hero} + ')'"
       >
-        <div class="flex h-36 w-full items-center rounded-lg bg-white/30 backdrop-blur-lg backdrop-brightness-95">
+        <div
+          class="duration-700/30 flex h-36 w-full items-center rounded-lg bg-white backdrop-blur-lg backdrop-brightness-95 transition dark:bg-slate-700"
+        >
           <div class="space-y-4 p-4 px-8">
             <div class="text-4xl font-bold text-white" th:text="${theme.config.moments.moment_title}"></div>
             <div
@@ -28,7 +30,9 @@
       </div>
 
       <div th:if="${moments.items.size() == 0}" class="col-span-10 md:col-span-7">
-        <div class="flex h-32 items-center justify-center rounded-lg bg-white p-4">
+        <div
+          class="flex h-32 items-center justify-center rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
+        >
           <div class="space-y-2">
             <div class="text-md font-serif font-bold italic">oops!</div>
             <div class="text-sm font-bold">期待您的第一条Moments</div>
@@ -36,7 +40,7 @@
         </div>
       </div>
       <div th:unless="${moments.items.size() == 0}" class="col-span-10 md:col-span-7">
-        <div class="rounded-lg bg-white">
+        <div class="rounded-lg bg-white transition duration-700 dark:bg-slate-700">
           <th:block>
             <div class="space-y-2" th:each="moment : ${moments.items}" th:with="content = ${moment.spec.content}">
               <div class="space-y-2 p-4">
@@ -45,14 +49,17 @@
                     class="h-6 w-6 rounded-lg bg-cover bg-center"
                     th:style="'background-image:url(' + ${moment.owner.avatar} + ')'"
                   ></div>
-                  <div class="text-sm font-bold text-gray-800" th:text="${moment.owner.displayName}"></div>
+                  <div
+                    class="text-sm font-bold text-gray-800 transition duration-700 dark:text-slate-100"
+                    th:text="${moment.owner.displayName}"
+                  ></div>
                 </div>
                 <div
-                  class="text-xs text-gray-500"
+                  class="text-xs text-gray-500 transition duration-700 dark:text-slate-400"
                   th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd HH:mm')}"
                 ></div>
                 <div
-                  class="text-sm font-bold text-gray-700"
+                  class="text-sm font-bold text-gray-700 transition duration-700 dark:text-slate-200"
                   th:if="${not #strings.isEmpty(content.html)}"
                   th:utext="${content.html}"
                 ></div>
@@ -76,17 +83,23 @@
         </div>
       </div>
       <div class="col-span-10 md:col-span-3">
-        <div class="space-y-2 rounded-lg bg-white p-4">
+        <div class="space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700">
           <div class="flex items-start gap-4">
             <div
               class="h-12 w-12 rounded-lg bg-cover bg-center"
               th:style="'background-image:url(' + ${theme.config.moments.avatar} + ')'"
             ></div>
             <div class="max-w-lg shrink space-y-2">
-              <div class="text-lg font-bold" th:text="${theme.config.moments.name}"></div>
+              <div
+                class="text-lg font-bold transition duration-700 dark:text-slate-100"
+                th:text="${theme.config.moments.name}"
+              ></div>
             </div>
           </div>
-          <div class="text-xs font-bold text-gray-500" th:text="${theme.config.moments.signature}" />
+          <div
+            class="text-xs font-bold text-gray-500 transition duration-700 dark:text-slate-400"
+            th:text="${theme.config.moments.signature}"
+          />
           <th:block th:replace="modules/components/social :: social(socials=${theme.config.moments.socials})">
           </th:block>
         </div>

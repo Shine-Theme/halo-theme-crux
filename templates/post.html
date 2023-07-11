@@ -5,7 +5,7 @@
       <div
         x-data="toc"
         x-init="generateToc('content','toc-container-mobile','toc-mobile')"
-        class="toc-container-mobile col-span-10 space-y-2 rounded-lg bg-white p-4 md:hidden"
+        class="toc-container-mobile col-span-10 space-y-2 rounded-lg bg-white p-4 transition transition duration-700 duration-700 dark:bg-slate-600 dark:bg-slate-700 md:hidden"
       >
         <div class="text-md font-bold text-gray-700">文章目录</div>
         <div class="border-t"></div>
@@ -15,7 +15,7 @@
         <div class="rounded-lg md:hidden">
           <img class="w-full rounded-lg" th:if="${not #strings.isEmpty(post.spec.cover)}" th:src="${post.spec.cover}" />
         </div>
-        <div class="rounded-lg bg-white">
+        <div class="rounded-lg bg-white transition duration-700 dark:bg-slate-700">
           <div
             th:if="${post.spec.cover.isEmpty}"
             class="flex h-96 w-full rounded-t-lg bg-cover bg-center"
@@ -146,7 +146,7 @@
           </div>
           <article
             th:unless="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser'}"
-            class="prose !max-w-none p-4 md:p-8"
+            class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
             id="content"
             th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
           >
@@ -154,7 +154,7 @@
           </article>
           <article
             th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
-            class="prose !max-w-none p-4 md:p-8"
+            class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
             id="content"
             th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
           >
@@ -168,7 +168,9 @@
             th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
             class="my-4 flex items-center justify-center"
           >
-            <div class="to-gray-600 text-sm font-bold">作者设定登录后可见</div>
+            <div class="text-sm font-bold text-gray-600 transition duration-700 dark:text-slate-100">
+              作者设定登录后可见
+            </div>
           </div>
           <div
             th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
@@ -183,15 +185,15 @@
             </a>
           </div>
           <div class="m-4 my-0 border-t"></div>
-          <div class="space-y-2 rounded-lg bg-white">
+          <div class="space-y-2 rounded-lg bg-white transition duration-700 dark:bg-slate-700">
             <div class="p-8">
               <div class="space-y-4" th:if="${pluginFinder.available('PluginCommentWidget')}">
-                <div class="text-xl font-bold">评论</div>
+                <div class="text-xl font-bold transition duration-700 dark:text-slate-100">评论</div>
                 <halo:comment
                   group="content.halo.run"
                   kind="Post"
                   th:attr="name=${post.metadata.name}"
-                  colorScheme="'light'"
+                  colorScheme="localStorage.getItem('color-scheme')"
                 />
               </div>
             </div>
@@ -211,9 +213,9 @@
         <div
           x-data="toc"
           x-init="generateToc('content','toc-container','toc')"
-          class="toc-container hidden space-y-2 rounded-lg bg-white p-4 md:block"
+          class="toc-container hidden space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:block"
         >
-          <div class="text-md font-bold text-gray-700">文章目录</div>
+          <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">文章目录</div>
           <div class="border-t"></div>
           <div class="toc flex items-start justify-start space-x-4">
             <div class="space-y-1 dark:border-slate-500"></div>
@@ -222,8 +224,11 @@
             ></div>
           </div>
         </div>
-        <div th:if="${#annotations.get(post, 'app')}" class="w-full space-y-2 rounded-lg bg-white p-4">
-          <div class="text-md font-bold text-gray-700">APP资源</div>
+        <div
+          th:if="${#annotations.get(post, 'app')}"
+          class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
+        >
+          <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">APP资源</div>
           <div class="border-t"></div>
           <div class="flex items-start justify-start space-x-4">
             <div
@@ -231,13 +236,22 @@
               th:style="'background-image:url(' + ${#annotations.get(post, 'app_icon')} + ')'"
             ></div>
             <div>
-              <div class="text-md font-bold text-gray-700" th:text="${#annotations.get(post, 'app_name')}"></div>
-              <div class="text-xs font-bold text-gray-500" th:text="${#annotations.get(post, 'app_version')}"></div>
+              <div
+                class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
+                th:text="${#annotations.get(post, 'app_name')}"
+              ></div>
+              <div
+                class="text-xs font-bold text-gray-500 transition duration-700 dark:text-slate-200"
+                th:text="${#annotations.get(post, 'app_version')}"
+              ></div>
             </div>
           </div>
         </div>
-        <div th:if="${#annotations.get(post, 'book')}" class="w-full space-y-2 rounded-lg bg-white p-4">
-          <div class="text-md font-bold text-gray-700">图书资源</div>
+        <div
+          th:if="${#annotations.get(post, 'book')}"
+          class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
+        >
+          <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">图书资源</div>
           <div class="border-t"></div>
           <div class="flex items-start justify-start space-x-4">
             <div
@@ -245,13 +259,25 @@
               th:style="'background-image:url(' + ${#annotations.get(post, 'book_cover')} + ')'"
             ></div>
             <div>
-              <div class="text-md font-bold text-gray-700" th:text="${#annotations.get(post, 'book_name')}"></div>
-              <div class="text-xs font-bold text-gray-500" th:text="${#annotations.get(post, 'book_author')}"></div>
+              <div
+                class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
+                th:text="${#annotations.get(post, 'book_name')}"
+              ></div>
+              <div
+                class="text-xs font-bold text-gray-500 transition duration-700 dark:text-slate-200"
+                th:text="${#annotations.get(post, 'book_author')}"
+              ></div>
             </div>
           </div>
         </div>
-        <div th:if="${#annotations.get(post, 'resource')}" class="w-full space-y-2 rounded-lg bg-white p-4">
-          <div class="text-md font-bold text-gray-700" th:text="${#annotations.get(post, 'resource_name')}"></div>
+        <div
+          th:if="${#annotations.get(post, 'resource')}"
+          class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
+        >
+          <div
+            class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
+            th:text="${#annotations.get(post, 'resource_name')}"
+          ></div>
           <div class="border-t"></div>
           <a
             th:href="${#annotations.get(post, 'resource_download')}"

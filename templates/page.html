@@ -5,9 +5,9 @@
       <div
         x-data="toc"
         x-init="generateToc('content','toc-container-mobile','toc-mobile')"
-        class="toc-container-mobile col-span-10 space-y-2 rounded-lg bg-white p-4 md:hidden"
+        class="toc-container-mobile col-span-10 space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:hidden"
       >
-        <div class="text-md font-bold text-gray-700">文章目录</div>
+        <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">文章目录</div>
         <div class="border-t"></div>
         <div class="toc-mobile flex items-start justify-start space-x-4"></div>
       </div>
@@ -19,7 +19,7 @@
             th:src="${singlePage.spec.cover}"
           />
         </div>
-        <div class="rounded-lg bg-white">
+        <div class="rounded-lg bg-white transition duration-700 dark:bg-slate-700">
           <div
             th:if="${singlePage.spec.cover.isEmpty}"
             class="flex h-96 w-full rounded-t-lg bg-cover bg-center"
@@ -28,7 +28,9 @@
             <div
               class="relative h-full w-full rounded-t-lg backdrop-blur-lg backdrop-brightness-110 backdrop-saturate-50"
             >
-              <div class="absolute bottom-0 space-y-2 p-4 text-white md:p-8">
+              <div
+                class="absolute bottom-0 space-y-2 p-4 text-white transition duration-700 dark:text-slate-100 md:p-8"
+              >
                 <div
                   class="text-4xl font-bold transition duration-700 hover:text-blue-700"
                   th:text="${singlePage.spec.title}"
@@ -115,22 +117,22 @@
             </div>
           </div>
           <article
-            class="prose !max-w-none p-4 md:p-8"
+            class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
             id="content"
             th:classappend="${theme.config.singlePage.content_size} + ' ' + ${theme.config.singlePage.content_theme}"
           >
             <th:block th:utext="${singlePage.content.content}"></th:block>
           </article>
           <div class="m-4 my-0 border-t"></div>
-          <div class="space-y-2 rounded-lg bg-white">
+          <div class="space-y-2 rounded-lg bg-white transition duration-700 dark:bg-slate-700">
             <div class="p-8">
               <div class="space-y-4" th:if="${pluginFinder.available('PluginCommentWidget')}">
-                <div class="text-xl font-bold">评论</div>
+                <div class="text-xl font-bold transition duration-700 dark:text-slate-100">评论</div>
                 <halo:comment
                   group="content.halo.run"
                   kind="singlePage"
                   th:attr="name=${singlePage.metadata.name}"
-                  colorScheme="'light'"
+                  colorScheme="localStorage.getItem('color-scheme')"
                 />
               </div>
             </div>
@@ -147,8 +149,12 @@
           />
         </div>
 
-        <div class="toc-container hidden space-y-2 rounded-lg bg-white p-4 md:block">
-          <div class="text-md font-bold text-gray-700">文章目录</div>
+        <div
+          x-data="toc"
+          x-init="generateToc('content','toc-container','toc')"
+          class="toc-container hidden space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:block"
+        >
+          <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">文章目录</div>
           <div class="border-t"></div>
           <div class="toc flex items-start justify-start space-x-4">
             <div class="space-y-1 dark:border-slate-500"></div>
@@ -156,15 +162,6 @@
               class="group flex items-center justify-between rounded px-1.5 py-1 text-sm opacity-80 transition-all hover:bg-gray-100 dark:text-slate-50 dark:hover:bg-slate-700"
             ></div>
           </div>
-        </div>
-        <div
-          x-data="toc"
-          x-init="generateToc('content','toc-container','toc')"
-          class="toc-container hidden w-full space-y-2 rounded-lg bg-white p-4 md:block"
-        >
-          <div class="text-md font-bold text-gray-700">文章目录</div>
-          <div class="border-t"></div>
-          <div class="toc"></div>
         </div>
       </div>
     </div>
