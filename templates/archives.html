@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content})">
-<th:block th:fragment="content">
+  <th:block th:fragment="content">
     <th:block th:each="archive : ${archives.items}">
-        <div class="w-full grid grid-cols-8 gap-4 py-6 ">
-            <div class="col-span-8 space-y-2">
-                <div class="font-bold text-4xl">文章归档</div>
-                <div class="font-bold text-2xl font-serif italic">#Archives</div>
-            </div>
-            <div class="col-span-8 border"></div>
-            <div class="col-span-8 space-y-2">
-            </div>
-            <div class="col-span-10 grid grid-cols-3 gap-4">
-                <th:block th:each="month : ${archive.months}">
-                    <div class="font-bold text-2xl font-serif italic col-span-3" th:text="${month.month + '月'}"></div>
-                    <th:block
-                        th:replace="modules/components/archives-post-card :: components-archives-post-card(posts = ${month.posts})">
-                    </th:block>
-                </th:block>
-                <th:block th:replace="modules/components/post-card"></th:block>
-            </div>
+      <div class="grid w-full grid-cols-8 gap-4 py-6">
+        <div class="col-span-8 space-y-2">
+          <div class="text-4xl font-bold">文章归档</div>
+          <div class="font-serif text-2xl font-bold italic">#Archives</div>
         </div>
+        <div class="col-span-8 border"></div>
+        <div class="col-span-8 space-y-2"></div>
+        <div class="col-span-10 grid grid-cols-3 gap-4">
+          <th:block th:each="month : ${archive.months}">
+            <div class="col-span-3 font-serif text-2xl font-bold italic" th:text="${month.month + '月'}"></div>
+            <th:block
+              th:replace="modules/components/archives-post-card :: components-archives-post-card(posts = ${month.posts})"
+            >
+            </th:block>
+          </th:block>
+          <th:block th:replace="modules/components/post-card"></th:block>
+        </div>
+      </div>
     </th:block>
-</th:block>
-
+  </th:block>
 </html>

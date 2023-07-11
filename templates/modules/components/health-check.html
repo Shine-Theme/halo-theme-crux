@@ -8,172 +8,199 @@
  * 
  * Copyright (c) 2023 by Crux, All Rights Reserved. 
 -->
-<div class="w-full grid grid-cols-8 gap-4 py-6 ">
-    <div class="col-span-10 space-y-2">
-        <div class="font-bold text-4xl">可用性检测</div>
-        <div class="font-bold text-2xl font-serif italic">#Health Check</div>
-    </div>
-    <div class="col-span-10 border"></div>
+<div class="grid w-full grid-cols-8 gap-4 py-6">
+  <div class="col-span-10 space-y-2">
+    <div class="text-4xl font-bold">可用性检测</div>
+    <div class="font-serif text-2xl font-bold italic">#Health Check</div>
+  </div>
+  <div class="col-span-10 border"></div>
 
-    <div class="col-span-10 font-bold text-lg font-serif italic">!Important</div>
-    <div class="col-span-10 bg-orange-50 border border-orange-500 px-4 p-2 rounded-lg flex items-center gap-2">
-        <div class="w-6 h-6 p-1 bg-orange-500 rounded-lg flex items-center justify-center">
-            <div class="text-white i-heroicons-bolt-solid !w-full !h-full "></div>
-        </div>
-        <div class="text-orange-500 text-md">
-            <p><b>注意：</b>启用主题后，全部的文章需要重新保存并发布以重建Annotation Settings，否则会无法正常访问文章</p>
-        </div>
+  <div class="col-span-10 font-serif text-lg font-bold italic">!Important</div>
+  <div class="col-span-10 flex items-center gap-2 rounded-lg border border-orange-500 bg-orange-50 p-2 px-4">
+    <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 p-1">
+      <div class="i-heroicons-bolt-solid !h-full !w-full text-white"></div>
     </div>
-    <div class="col-span-10 bg-orange-50 border border-orange-500 px-4 p-2 rounded-lg flex items-center gap-2">
-        <div class="w-6 h-6 p-1 bg-orange-500 rounded-lg flex items-center justify-center">
-            <div class="text-white i-heroicons-bolt-solid !w-full !h-full "></div>
-        </div>
-        <div class="text-orange-500 text-md">
-            <p><b>注意：</b>现阶段的Github页面可能会暴露您的Token，请谨慎使用</p>
-        </div>
+    <div class="text-md text-orange-500">
+      <p><b>注意：</b>启用主题后，全部的文章需要重新保存并发布以重建Annotation Settings，否则会无法正常访问文章</p>
     </div>
-
-    <div class="font-bold text-lg font-serif italic">#Plugins</div>
-    <div class="col-span-10 grid grid-cols-3 gap-4">
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginMoments')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginMoments')}"
-                    class="w-6 h-6 bg-red-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">瞬间</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>必备插件</b></p>
-                <p>若不安装该插件，可能导致'/index'以及'/moments'页面无法访问</p>
-            </div>
-
-        </div>
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginPhotos')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginPhotos')}"
-                    class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">图库管理</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>可选插件</b></p>
-                <p>若不安装该插件，可能导致'/photos'页面无法访问</p>
-            </div>
-        </div>
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginSearchWidget')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginSearchWidget')}"
-                    class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">搜索组件</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>可选插件</b></p>
-                <p>若不安装该插件，无法使用搜索功能</p>
-            </div>
-        </div>
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginLightGallery')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginLightGallery')}"
-                    class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">lightgallery.js 灯箱</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>可选插件</b></p>
-                <p>若不安装该插件，可能无法正常预览图像</p>
-            </div>
-        </div>
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginHighlightJS')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginHighlightJS')}"
-                    class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">highlight.js 代码高亮</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>可选插件</b></p>
-                <p>若不安装该插件，可能无法正常实现代码高亮</p>
-            </div>
-        </div>
-
-        <div class="col-span-3 md:col-span-1 bg-white rounded-lg p-4 space-y-2">
-            <div class="flex items-center justify-start gap-2">
-                <div th:if="${pluginFinder.available('PluginLinks')}"
-                    class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-check !w-5 !h-5 "></div>
-                </div>
-                <div th:unless="${pluginFinder.available('PluginLinks')}"
-                    class="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <div class="text-white i-uim-multiply !w-5 !h-5 "></div>
-                </div>
-                <div class="font-bold text-xl">链接管理</div>
-            </div>
-            <div class="border-t"></div>
-            <div class="text-sm">
-                <p>这是一个<b>可选插件</b></p>
-                <p>若不安装该插件，可能无法正常访问'/links'页面</p>
-            </div>
-        </div>
+  </div>
+  <div class="col-span-10 flex items-center gap-2 rounded-lg border border-orange-500 bg-orange-50 p-2 px-4">
+    <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 p-1">
+      <div class="i-heroicons-bolt-solid !h-full !w-full text-white"></div>
     </div>
-
-    <div class="col-span-10 border"></div>
-    <div class="font-bold text-lg font-serif italic">#Settings</div>
-    <div th:if="${theme.config.nav.menu.isEmpty()}"
-        class="col-span-10 bg-orange-50 border border-red-500 px-4 p-2 rounded-lg flex items-center gap-2">
-        <div class="w-6 h-6 p-1 bg-red-500 rounded-lg flex items-center justify-center">
-            <div class="text-white i-uim-multiply !w-full !h-full "></div>
-        </div>
-        <div class="text-red-500 text-md">
-            <p>请完成<b>‘导航’</b>内的全部设置项，否则无法正常访问全部页面</p>
-        </div>
+    <div class="text-md text-orange-500">
+      <p><b>注意：</b>现阶段的Github页面可能会暴露您的Token，请谨慎使用</p>
     </div>
-    <div th:if="${theme.config.global.default_cover.isEmpty()}"
-        class="col-span-10 bg-orange-50 border border-orange-500 px-4 p-2 rounded-lg flex items-center gap-2">
-        <div class="w-6 h-6 p-1 bg-orange-500 rounded-lg flex items-center justify-center">
-            <div class="text-white i-heroicons-bolt-solid !w-full !h-full "></div>
+  </div>
+
+  <div class="font-serif text-lg font-bold italic">#Plugins</div>
+  <div class="col-span-10 grid grid-cols-3 gap-4">
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginMoments')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
         </div>
-        <div class="text-orange-500 text-md">
-            <p>请完成<b>‘全局设置-默认封面图’</b>否则文章卡片以及文章页面无法正常访问</p>
+        <div
+          th:unless="${pluginFinder.available('PluginMoments')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-red-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
         </div>
+        <div class="text-xl font-bold">瞬间</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>必备插件</b></p>
+        <p>若不安装该插件，可能导致'/index'以及'/moments'页面无法访问</p>
+      </div>
+    </div>
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginPhotos')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
+        </div>
+        <div
+          th:unless="${pluginFinder.available('PluginPhotos')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
+        </div>
+        <div class="text-xl font-bold">图库管理</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>可选插件</b></p>
+        <p>若不安装该插件，可能导致'/photos'页面无法访问</p>
+      </div>
+    </div>
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginSearchWidget')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
+        </div>
+        <div
+          th:unless="${pluginFinder.available('PluginSearchWidget')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
+        </div>
+        <div class="text-xl font-bold">搜索组件</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>可选插件</b></p>
+        <p>若不安装该插件，无法使用搜索功能</p>
+      </div>
+    </div>
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginLightGallery')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
+        </div>
+        <div
+          th:unless="${pluginFinder.available('PluginLightGallery')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
+        </div>
+        <div class="text-xl font-bold">lightgallery.js 灯箱</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>可选插件</b></p>
+        <p>若不安装该插件，可能无法正常预览图像</p>
+      </div>
+    </div>
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginHighlightJS')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
+        </div>
+        <div
+          th:unless="${pluginFinder.available('PluginHighlightJS')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
+        </div>
+        <div class="text-xl font-bold">highlight.js 代码高亮</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>可选插件</b></p>
+        <p>若不安装该插件，可能无法正常实现代码高亮</p>
+      </div>
     </div>
 
-    <div class="col-span-10 bg-orange-50 border border-orange-500 px-4 p-2 rounded-lg flex items-center gap-2">
-        <div class="w-6 h-6 p-1 bg-orange-500 rounded-lg flex items-center justify-center">
-            <div class="text-white i-heroicons-bolt-solid !w-full !h-full "></div>
+    <div class="col-span-3 space-y-2 rounded-lg bg-white p-4 md:col-span-1">
+      <div class="flex items-center justify-start gap-2">
+        <div
+          th:if="${pluginFinder.available('PluginLinks')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-green-500"
+        >
+          <div class="i-uim-check !h-5 !w-5 text-white"></div>
         </div>
-        <div class="text-orange-500 text-md">
-            <p>请尽可能完成设置中的其他内容，以确保达到最好的使用体验</p>
+        <div
+          th:unless="${pluginFinder.available('PluginLinks')}"
+          class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500"
+        >
+          <div class="i-uim-multiply !h-5 !w-5 text-white"></div>
         </div>
+        <div class="text-xl font-bold">链接管理</div>
+      </div>
+      <div class="border-t"></div>
+      <div class="text-sm">
+        <p>这是一个<b>可选插件</b></p>
+        <p>若不安装该插件，可能无法正常访问'/links'页面</p>
+      </div>
     </div>
+  </div>
+
+  <div class="col-span-10 border"></div>
+  <div class="font-serif text-lg font-bold italic">#Settings</div>
+  <div
+    th:if="${theme.config.nav.menu.isEmpty()}"
+    class="col-span-10 flex items-center gap-2 rounded-lg border border-red-500 bg-orange-50 p-2 px-4"
+  >
+    <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-red-500 p-1">
+      <div class="i-uim-multiply !h-full !w-full text-white"></div>
+    </div>
+    <div class="text-md text-red-500">
+      <p>请完成<b>‘导航’</b>内的全部设置项，否则无法正常访问全部页面</p>
+    </div>
+  </div>
+  <div
+    th:if="${theme.config.global.default_cover.isEmpty()}"
+    class="col-span-10 flex items-center gap-2 rounded-lg border border-orange-500 bg-orange-50 p-2 px-4"
+  >
+    <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 p-1">
+      <div class="i-heroicons-bolt-solid !h-full !w-full text-white"></div>
+    </div>
+    <div class="text-md text-orange-500">
+      <p>请完成<b>‘全局设置-默认封面图’</b>否则文章卡片以及文章页面无法正常访问</p>
+    </div>
+  </div>
+
+  <div class="col-span-10 flex items-center gap-2 rounded-lg border border-orange-500 bg-orange-50 p-2 px-4">
+    <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500 p-1">
+      <div class="i-heroicons-bolt-solid !h-full !w-full text-white"></div>
+    </div>
+    <div class="text-md text-orange-500">
+      <p>请尽可能完成设置中的其他内容，以确保达到最好的使用体验</p>
+    </div>
+  </div>
 </div>
