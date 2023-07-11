@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-07 13:26:55
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:48:29
+ * @LastEditTime: 2023-07-11 19:55:07
  * @FilePath: /theme-crux/templates/author.html
  * @Description: 
  * 
@@ -13,8 +13,11 @@
   <th:block th:fragment="content">
     <div class="grid w-full grid-cols-8 gap-4 py-6">
       <div class="col-span-8 space-y-2">
-        <div class="text-4xl font-bold" th:text="${author.spec.displayName}"></div>
-        <div class="font-serif text-2xl font-bold italic">#Author</div>
+        <div
+          class="text-4xl font-bold transition duration-700 dark:text-slate-100"
+          th:text="${author.spec.displayName}"
+        ></div>
+        <div class="font-serif text-2xl font-bold italic transition duration-700 dark:text-slate-100">#Author</div>
       </div>
       <div class="col-span-8 border"></div>
       <div class="col-span-10 grid grid-cols-3 gap-4">

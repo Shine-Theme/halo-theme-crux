@@ -11,7 +11,7 @@
 
 <div
   th:fragment="components-archives-post-card(posts)"
-  class="col-span-3 rounded-lg bg-white md:col-span-1"
+  class="col-span-3 rounded-lg bg-white transition duration-700 dark:bg-slate-700 md:col-span-1"
   th:each="post : ${posts}"
   th:href="${post.status.permalink}"
 >
@@ -34,6 +34,12 @@
         <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
       </a>
       <div class="flex space-x-1">
+        <div
+          th:if="${post.spec.pinned}"
+          class="flex w-fit items-center space-x-0.5 rounded-lg bg-black/10 p-1 px-1.5 backdrop-blur-lg backdrop-brightness-150"
+        >
+          <div class="i-tabler-pin text-white"></div>
+        </div>
         <a
           th:each="categorie : ${post.categories}"
           th:href="${categorie.status.permalink}"
@@ -64,6 +70,12 @@
         <div class="text-sm font-bold text-white" th:text="${post.owner.displayName}"></div>
       </a>
       <div class="flex space-x-1">
+        <div
+          th:if="${post.spec.pinned}"
+          class="flex w-fit items-center space-x-0.5 rounded-lg bg-black/10 p-1 px-1.5 backdrop-blur-lg backdrop-brightness-150"
+        >
+          <div class="i-tabler-pin text-white"></div>
+        </div>
         <a
           th:each="categorie : ${post.categories}"
           th:href="${categorie.status.permalink}"
@@ -77,13 +89,21 @@
   </div>
   <div class="space-y-1 p-4">
     <!-- 文章发布日期 -->
-    <div class="text-xs text-gray-500" th:text="${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd HH:mm')}"></div>
-    <div class="text-2xl font-bold text-gray-900 transition duration-700 hover:text-blue-700 hover:underline">
+    <div
+      class="text-xs text-gray-500 transition duration-700 dark:text-slate-400"
+      th:text="${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd HH:mm')}"
+    ></div>
+    <div
+      class="line-clamp-1 text-2xl font-bold text-gray-900 transition transition duration-700 duration-700 hover:text-blue-700 hover:underline dark:text-slate-100"
+    >
       <!-- 文章标题 -->
       <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
     </div>
     <!-- 文章摘要 -->
-    <p class="line-clamp-5 h-24 text-sm text-gray-500" th:text="${post.status.excerpt}"></p>
+    <p
+      class="line-clamp-5 h-24 text-sm text-gray-500 transition duration-700 dark:text-slate-400"
+      th:text="${post.status.excerpt}"
+    ></p>
     <!-- 文章跳转链接 -->
     <div class="w-full">
       <a

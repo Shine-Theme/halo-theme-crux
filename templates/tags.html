@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-05 15:27:38
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:49:37
+ * @LastEditTime: 2023-07-11 20:24:15
  * @FilePath: /theme-crux/templates/tags.html
  * @Description:  
  * 
@@ -13,17 +13,17 @@
   <th:block th:fragment="content">
     <div class="grid w-full grid-cols-8 gap-4 py-6">
       <div class="col-span-8 space-y-2">
-        <div class="text-4xl font-bold">标签合集</div>
-        <div class="font-serif text-2xl font-bold italic">#Tags</div>
+        <div class="text-4xl font-bold transition duration-700 dark:text-slate-100">标签合集</div>
+        <div class="font-serif text-2xl font-bold italic transition duration-700 dark:text-slate-100">#Tags</div>
       </div>
       <div class="col-span-8 border"></div>
       <a
-        class="col-span-4 rounded-lg bg-white p-2 px-2 md:col-span-2"
+        class="col-span-4 rounded-lg bg-white p-2 px-2 transition duration-700 dark:bg-slate-700 md:col-span-2"
         th:each="tag : ${tags}"
         th:href="${tag.status.permalink}"
       >
-        <div class="to-blue-800 font-mono text-2xl font-bold">#</div>
-        <div class="font-bold" th:text="${tag.spec.displayName}" />
+        <div class="font-mono text-2xl font-bold text-blue-800 transition duration-700 dark:text-blue-300">#</div>
+        <div class="font-bold transition duration-700 dark:text-slate-100" th:text="${tag.spec.displayName}" />
       </a>
     </div>
   </th:block>

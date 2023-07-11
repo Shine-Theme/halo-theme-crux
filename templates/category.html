@@ -13,8 +13,11 @@
   <th:block th:fragment="content">
     <div class="grid w-full grid-cols-8 gap-4 py-6">
       <div class="col-span-10 space-y-2">
-        <div class="text-4xl font-bold" th:text="${category.spec.displayName}"></div>
-        <div class="font-serif text-2xl font-bold italic">#Category</div>
+        <div
+          class="text-4xl font-bold transition duration-700 dark:text-slate-100"
+          th:text="${category.spec.displayName}"
+        ></div>
+        <div class="font-serif text-2xl font-bold italic transition duration-700 dark:text-slate-100">#Category</div>
       </div>
       <div class="col-span-10 border"></div>
 

@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-06 16:57:34
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-11 18:00:46
+ * @LastEditTime: 2023-07-11 20:08:06
  * @FilePath: /theme-crux/templates/page_github.html
  * @Description: 
  * 
@@ -42,8 +42,11 @@
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center rounded-lg bg-white p-8" x-show="!loading&&error">
-        <div class="font-mono font-bold text-red-500">
+      <div
+        class="flex items-center justify-center rounded-lg bg-white p-8 transition duration-700 dark:bg-slate-700"
+        x-show="!loading&&error"
+      >
+        <div class="font-mono font-bold text-red-500 transition duration-700 dark:text-red-400">
           <p>Oops!</p>
           <p>Some errors occurred.</p>
         </div>
@@ -53,9 +56,12 @@
           <div class="flex items-center gap-2">
             <img class="h-16 w-16 rounded-lg" id="avatar" :src="userinfo.avatar_url" />
             <div class="space-y-1">
-              <div class="font-mono text-3xl font-bold" x-text="userinfo.name"></div>
               <div
-                class="font-mono text-lg font-bold text-gray-500"
+                class="font-mono text-3xl font-bold transition duration-700 dark:text-slate-100"
+                x-text="userinfo.name"
+              ></div>
+              <div
+                class="font-mono text-lg font-bold text-gray-500 transition duration-700 dark:text-slate-400"
                 th:text="${#annotations.get(singlePage, 'username')}"
               ></div>
             </div>
@@ -63,51 +69,66 @@
         </div>
         <div class="col-span-10 border"></div>
         <div class="col-span-10 grid grid-cols-3 gap-4">
-          <div class="relative col-span-3 h-36 rounded-lg bg-white p-4 md:col-span-1">
-            <div class="absolute left-4 top-4 font-mono text-lg text-gray-800">Followers</div>
+          <div
+            class="relative col-span-3 h-36 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:col-span-1"
+          >
             <div
-              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800"
+              class="absolute left-4 top-4 font-mono text-lg text-gray-800 transition duration-700 dark:text-slate-100"
+            >
+              Followers
+            </div>
+            <div
+              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800 transition duration-700 dark:text-slate-100"
               x-text="userinfo.followers"
             ></div>
           </div>
-          <div class="relative col-span-3 h-36 rounded-lg bg-white p-4 md:col-span-1">
-            <div class="absolute left-4 top-4 font-mono text-lg text-gray-800">Following</div>
+          <div
+            class="relative col-span-3 h-36 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:col-span-1"
+          >
             <div
-              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800"
+              class="absolute left-4 top-4 font-mono text-lg text-gray-800 transition duration-700 dark:text-slate-100"
+            >
+              Following
+            </div>
+            <div
+              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800 transition duration-700 dark:text-slate-100"
               x-text="userinfo.following"
             ></div>
           </div>
-          <div class="relative col-span-3 h-36 rounded-lg bg-white p-4 md:col-span-1">
-            <div class="absolute left-4 top-4 font-mono text-lg text-gray-800">Public repos</div>
+          <div
+            class="relative col-span-3 h-36 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:col-span-1"
+          >
             <div
-              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800"
+              class="absolute left-4 top-4 font-mono text-lg text-gray-800 transition duration-700 dark:text-slate-100"
+            >
+              Public repos
+            </div>
+            <div
+              class="absolute bottom-4 right-4 font-mono text-6xl font-bold text-gray-800 transition duration-700 dark:text-slate-100"
               x-text="userinfo.public_repos"
             ></div>
           </div>
-          <div class="col-span-3 font-mono text-2xl font-bold"># Public repos</div>
+          <div class="col-span-3 font-mono text-2xl font-bold transition duration-700 dark:text-slate-100">
+            # Public repos
+          </div>
           <template x-for="repo in repos">
-            <div class="relative col-span-3 h-36 rounded-lg bg-white p-4 md:col-span-1">
-              <div class="flex items-center gap-4 font-mono text-xl font-bold text-gray-800">
-                <svg
-                  class="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  data-name="Layer 1"
-                  viewBox="0 0 24 24"
-                  id="code-branch"
-                >
-                  <path
-                    fill="#000000"
-                    d="M17 6.06a3 3 0 0 0-1.15 5.77A2 2 0 0 1 14 13.06h-4a3.91 3.91 0 0 0-2 .56V7.88a3 3 0 1 0-2 0v8.36a3 3 0 1 0 2.16.05A2 2 0 0 1 10 15.06h4a4 4 0 0 0 3.91-3.16A3 3 0 0 0 17 6.06Zm-10-2a1 1 0 1 1-1 1 1 1 0 0 1 1-1Zm0 16a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm10-10a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z"
-                  ></path>
-                </svg>
+            <div
+              class="relative col-span-3 h-36 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700 md:col-span-1"
+            >
+              <div
+                class="flex items-center gap-4 font-mono text-xl font-bold text-gray-800 transition duration-700 dark:text-slate-100"
+              >
+                <div class="i-tabler-git-branch"></div>
                 <div x-text="repo.name"></div>
               </div>
 
-              <div class="text-md font-mono text-gray-600">
+              <div class="text-md font-mono text-gray-600 transition duration-700 dark:text-slate-400">
                 <span>Stars:</span><span x-text="repo.stargazers_count"></span>
               </div>
-              <div class="text-md font-mono text-gray-600"><span>Forks:</span><span x-text="repo.forks"></span></div>
-              <div class="text-md font-mono text-gray-600">
+              <div class="text-md font-mono text-gray-600 transition duration-700 dark:text-slate-400">
+                <span>Forks:</span><span x-text="repo.forks"></span>
+              </div>
+              <div class="text-md font-mono text-gray-600 transition duration-700 dark:text-slate-400">
                 <span>Watchers:</span><span x-text="repo.watchers"></span>
               </div>
             </div>

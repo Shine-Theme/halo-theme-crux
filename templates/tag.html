@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-05 15:26:56
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-07 13:23:54
+ * @LastEditTime: 2023-07-11 20:23:00
  * @FilePath: /theme-crux/templates/tag.html
  * @Description: 
  * 
@@ -13,8 +13,11 @@
   <th:block th:fragment="content">
     <div class="grid w-full grid-cols-8 gap-4 py-6">
       <div class="col-span-10 space-y-2">
-        <div class="text-4xl font-bold" th:text="${tag.spec.displayName}"></div>
-        <div class="font-serif text-2xl font-bold italic">#Tag</div>
+        <div
+          class="text-4xl font-bold transition duration-700 dark:text-slate-100"
+          th:text="${tag.spec.displayName}"
+        ></div>
+        <div class="font-serif text-2xl font-bold italic transition duration-700 dark:text-slate-100">#Tag</div>
       </div>
       <div class="col-span-10 border"></div>
 
