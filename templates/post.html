@@ -145,7 +145,7 @@
             </div>
           </div>
           <article
-            th:unless="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser'}"
+            th:unless="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser'}"
             class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
             id="content"
             th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
@@ -153,19 +153,26 @@
             <th:block th:utext="${post.content.content}"></th:block>
           </article>
           <article
-            th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
+            th:if="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser' }"
             class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
             id="content"
             th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
           >
-            <th:block th:utext="${#annotations.get(post, 'login_before_read_summary')}"></th:block>
+            <th:block
+              th:if="${#annotations.contains(post, 'login_before_read_summary') and !#annotations.get(post, 'login_before_read_summary').isEmpty()}"
+              th:utext="${#annotations.get(post, 'login_before_read_summary')}"
+            ></th:block>
+            <th:block
+              th:unless="${#annotations.contains(post, 'login_before_read_summary') and !#annotations.get(post, 'login_before_read_summary').isEmpty()}"
+              th:utext="${post.spec.excerpt.raw}"
+            ></th:block>
           </article>
           <div
-            th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
+            th:if="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser' }"
             class="m-4 my-0 border-t"
           ></div>
           <div
-            th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
+            th:if="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser' }"
             class="my-4 flex items-center justify-center"
           >
             <div class="text-sm font-bold text-gray-600 transition duration-700 dark:text-slate-100">
@@ -173,7 +180,7 @@
             </div>
           </div>
           <div
-            th:if="${#annotations.get(post, 'login_before_read') and #authentication.name == 'anonymousUser' }"
+            th:if="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser' }"
             class="my-4 flex items-center justify-center"
           >
             <a
@@ -225,7 +232,7 @@
           </div>
         </div>
         <div
-          th:if="${#annotations.get(post, 'app')}"
+          th:if="${#annotations.getOrDefault(post, 'app',false)}"
           class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
         >
           <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">APP资源</div>
@@ -233,22 +240,22 @@
           <div class="flex items-start justify-start space-x-4">
             <div
               class="h-12 w-12 rounded-lg bg-cover bg-center"
-              th:style="'background-image:url(' + ${#annotations.get(post, 'app_icon')} + ')'"
+              th:style="'background-image:url(' + ${#annotations.getOrDefault(post, 'app_icon','NaN')} + ')'"
             ></div>
             <div>
               <div
                 class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
-                th:text="${#annotations.get(post, 'app_name')}"
+                th:text="${#annotations.getOrDefault(post, 'app_name','NaN')}"
               ></div>
               <div
                 class="text-xs font-bold text-gray-500 transition duration-700 dark:text-slate-200"
-                th:text="${#annotations.get(post, 'app_version')}"
+                th:text="${#annotations.getOrDefault(post, 'app_version','NaN')}"
               ></div>
             </div>
           </div>
         </div>
         <div
-          th:if="${#annotations.get(post, 'book')}"
+          th:if="${#annotations.getOrDefault(post, 'book',false)}"
           class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
         >
           <div class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100">图书资源</div>
@@ -256,35 +263,35 @@
           <div class="flex items-start justify-start space-x-4">
             <div
               class="h-16 w-12 rounded-lg bg-cover bg-center"
-              th:style="'background-image:url(' + ${#annotations.get(post, 'book_cover')} + ')'"
+              th:style="'background-image:url(' + ${#annotations.getOrDefault(post, 'book_cover',NaN)} + ')'"
             ></div>
             <div>
               <div
                 class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
-                th:text="${#annotations.get(post, 'book_name')}"
+                th:text="${#annotations.getOrDefault(post, 'book_name',NaN)}"
               ></div>
               <div
                 class="text-xs font-bold text-gray-500 transition duration-700 dark:text-slate-200"
-                th:text="${#annotations.get(post, 'book_author')}"
+                th:text="${#annotations.getOrDefault(post, 'book_author',NaN)}"
               ></div>
             </div>
           </div>
         </div>
         <div
-          th:if="${#annotations.get(post, 'resource')}"
+          th:if="${#annotations.getOrDefault(post, 'resource',false)}"
           class="w-full space-y-2 rounded-lg bg-white p-4 transition duration-700 dark:bg-slate-700"
         >
           <div
             class="text-md font-bold text-gray-700 transition duration-700 dark:text-slate-100"
-            th:text="${#annotations.get(post, 'resource_name')}"
+            th:text="${#annotations.getOrDefault(post, 'resource_name','NaN')}"
           ></div>
           <div class="border-t"></div>
           <a
-            th:href="${#annotations.get(post, 'resource_download')}"
+            th:href="${#annotations.getOrDefault(post, 'resource_download','NaN')}"
             class="flex w-full items-center justify-center space-x-2 rounded-lg bg-blue-50 p-2 text-blue-700 transition transition-all duration-700 hover:border hover:border-blue-700 hover:bg-blue-200"
           >
             <div class="i-tabler-download"></div>
-            <div class="text-sm font-bold" th:text="${#annotations.get(post, 'resource_method')}"></div>
+            <div class="text-sm font-bold" th:text="${#annotations.getOrDefault(post, 'resource_method','NaN')}"></div>
           </a>
         </div>
       </div>
