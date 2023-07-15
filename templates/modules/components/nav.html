@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-04 02:11:35
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-11 19:46:42
+ * @LastEditTime: 2023-07-15 21:36:02
  * @FilePath: /theme-crux/templates/modules/components/nav.html
  * @Description: 
  * 
@@ -44,7 +44,7 @@
 >
   <div class="w-full">
     <div class="flex w-full items-center justify-between p-4 px-4">
-      <div class="flex items-start justify-start gap-2">
+      <a href="/" class="flex items-start justify-start gap-2">
         <div
           th:unless="${theme.config.nav.emoji.isEmpty()}"
           class="flex h-8 w-8 items-center justify-center rounded-lg bg-white p-0.5 transition duration-700 dark:bg-slate-700"
@@ -61,7 +61,7 @@
           class="text-xl font-bold text-black transition duration-700 dark:text-white"
           th:text="${site.title}"
         ></div>
-      </div>
+      </a>
       <div class="flex items-center space-x-2">
         <div
           class="flex h-8 w-8 items-center justify-center rounded-lg border p-1.5 transition duration-700 hover:bg-white dark:border-slate-700 dark:hover:bg-slate-700"
