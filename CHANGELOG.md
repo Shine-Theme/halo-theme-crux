@@ -1,5 +1,14 @@
 # Changelog
 
+### 1.1.2 (2023-07-15)
+
+
+### Bug Fixes
+
+* **darkmod:** Fixed Dark Mode when open new page ([3893cc5](https://github.com/Shine-Theme/halo-theme-crux/commit/3893cc58c5d28e3395055df763ffe3715e607a07))
+* **nav:** Add a nav title that jumps to the homepage when clicked. ([16140ab](https://github.com/Shine-Theme/halo-theme-crux/commit/16140ab0e844398c9ce8d9c5e03b4ba2a84fe0ed))
+* **post:** :bug: fixed the problem where the post could not be previewed. ([d65824b](https://github.com/Shine-Theme/halo-theme-crux/commit/d65824b12d7c201395f04dfb6a4913a09a6af712))
+
 ### 1.1.1 (2023-07-11)
 
 
