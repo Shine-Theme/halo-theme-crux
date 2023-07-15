@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-11 14:52:45
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-11 19:27:01
+ * @LastEditTime: 2023-07-15 21:56:26
  * @FilePath: /theme-crux/src/data/darkmod.ts
  * @Description:
  *
@@ -13,10 +13,8 @@ export default () => ({
   init() {
     if (localStorage.getItem("color-scheme") === "dark") {
       this.colorscheme = "dark";
-      document.getElementById("app")?.classList.add("dark");
     } else {
       this.colorscheme = "light";
-      document.getElementById("app")?.classList.remove("dark");
     }
   },
   toggle() {
