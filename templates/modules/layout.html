@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2023-07-04 01:28:12
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-15 21:55:58
+ * @LastEditTime: 2023-07-16 00:58:31
  * @FilePath: /theme-crux/templates/modules/layout.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -49,19 +49,15 @@
       ::-webkit-scrollbar-track {
         border-radius: 0.25rem !important;
       }
-    </style>
 
-    <script>
-      if (localStorage.getItem("color-scheme") === "dark") {
-        document.getElementById("app")?.classList.add("dark");
-      } else {
-        document.getElementById("app")?.classList.remove("dark");
+      body[data-rendered="false"] {
+        display: none;
       }
-    </script>
+    </style>
   </head>
 
-  <body id="app">
-    <div class="bg-gray-50 transition duration-700 dark:bg-slate-800">
+  <body id="app" data-rendered="false">
+    <div class="bg-gray-50 pb-16 transition duration-700 dark:bg-slate-800">
       <th:block th:replace="~{modules/components/nav::components-nav}"></th:block>
       <div class="mx-auto min-h-screen max-w-screen-lg p-4 pt-32">
         <th:block th:replace="${content}" />
@@ -73,5 +69,36 @@
         <th:block th:replace="~{modules/components/footer-basic}"> </th:block>
       </div>
     </div>
+    <div id="scrollToTop" class="fixed bottom-4 right-4 z-10 h-12 w-12 rounded-lg bg-blue-700 p-3">
+      <div class="i-heroicons-arrow-small-up !h-full !w-full text-white"></div>
+    </div>
   </body>
+  <script>
+    if (localStorage.getItem("color-scheme") === "dark") {
+      document.getElementById("app")?.classList.add("dark");
+    } else {
+      document.getElementById("app")?.classList.remove("dark");
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      // 这里文档已加载完成
+      document.body.dataset.rendered = "true";
+    });
+    const scrollToTopBtn = document.querySelector("#scrollToTop");
+    let timeout;
+    function scrollToTop() {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        // 滚动到顶部
+      }, 200);
+      if ("scrollBehavior" in document.documentElement.style) {
+        // 平滑滚动
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // 直接滚动
+        window.scrollTo(0, 0);
+      }
+    }
+    scrollToTopBtn.addEventListener("click", scrollToTop);
+  </script>
 </html>
