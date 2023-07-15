@@ -38,6 +38,18 @@ spec:
           name: subtitle
           label: 副标题
           value: "Like a brilliant summer flower."
+    - group: post
+      label: 文章配置
+      formSchema:
+        - $formkit : radio
+          name: fonts
+          label: 字体样式
+          value: sans
+          options:
+            - label: 无衬线字体
+              value: sans
+            - label: 衬线字体
+              value: serif
     - group: moments
       label: 瞬间配置
       formSchema: 

@@ -147,16 +147,16 @@
           <article
             th:unless="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser'}"
             class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
+            th:classappend="${theme.config.post.fonts == 'serif'} ? '!font-serif !tracking-wide' : ''"
             id="content"
-            th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
           >
             <th:block th:utext="${post.content.content}"></th:block>
           </article>
           <article
             th:if="${#annotations.getOrDefault(post, 'login_before_read',false) and #authentication.name == 'anonymousUser' }"
             class="prose !max-w-none p-4 transition duration-700 dark:prose-invert md:p-8"
+            th:classappend="${theme.config.post.fonts == 'serif'} ? '!font-serif !tracking-wide' : ''"
             id="content"
-            th:classappend="${theme.config.post.content_size} + ' ' + ${theme.config.post.content_theme}"
           >
             <th:block
               th:if="${#annotations.contains(post, 'login_before_read_summary') and !#annotations.get(post, 'login_before_read_summary').isEmpty()}"
