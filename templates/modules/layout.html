@@ -50,15 +50,14 @@
         border-radius: 0.25rem !important;
       }
     </style>
-    
-<script>
 
-  if (localStorage.getItem("color-scheme") === "dark") {
+    <script>
+      if (localStorage.getItem("color-scheme") === "dark") {
         document.getElementById("app")?.classList.add("dark");
       } else {
         document.getElementById("app")?.classList.remove("dark");
       }
-  </script>
+    </script>
   </head>
 
   <body id="app">
@@ -75,5 +74,4 @@
       </div>
     </div>
   </body>
-  
 </html>
