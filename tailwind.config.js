@@ -2,7 +2,7 @@
  * @Author: Alkaid(AlkaidMegrez@outlook.com)
  * @Date: 2023-07-07 18:00:15
  * @LastEditors: Alkaid(AlkaidMegrez@outlook.com)
- * @LastEditTime: 2023-07-08 17:03:37
+ * @LastEditTime: 2023-07-16 04:35:52
  * @FilePath: /theme-crux/tailwind.config.js
  * @Description: 
  * 
@@ -16,6 +16,36 @@ module.exports = {
   darkMode: ['class'],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: [
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+      serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      mono: [
+        'ui-monospace',
+        'SFMono-Regular',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        '"Liberation Mono"',
+        '"Courier New"',
+        'monospace',
+      ],
+      noto_serif: ["Noto Serif SC"],
+    }
   },
   plugins: [
     require("@tailwindcss/typography"),
@@ -26,8 +56,8 @@ module.exports = {
       heroicons: {
         includeAll: true,
       },
-      uim:{
-      
+      uim: {
+
         includeAll: true,
       }
     })),

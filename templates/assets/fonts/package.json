@@ -1,0 +1,22 @@
+{
+  "name": "noto-serif-sc",
+  "version": "22.0.0",
+  "description": "(Noto Serif SC) Optimized CSS file and font files for local host.",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfcherng/Noto-Serif-SC-CSS.git"
+  },
+  "keywords": [
+    "font",
+    "noto-serif"
+  ],
+  "author": "Jack Cherng <jfcherng@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jfcherng/Noto-Serif-SC-CSS/issues"
+  },
+  "homepage": "https://github.com/jfcherng/Noto-Serif-SC-CSS#readme"
+}
