@@ -1,0 +1,41 @@
+name: Crux Build Beta
+on: 
+    push:
+        branches:
+            - master
+    pull_request:
+        branches:
+            - master
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+              node-version: [14.x, 16.x, 18.x]
+              # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      
+        steps:
+          - uses: actions/checkout@v3
+          - name: Install Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+              cache: 'npm'
+          - run: npm run build
+          - name: Install zip
+            uses: montudor/action-zip@v1
+          - name: Zip Files
+            run: zip -qq -r crux-beta.zip templates annotation-setting.yaml settings.yaml theme.yaml
+          - name: Create a Release
+            uses: elgohr/Github-Release-Action@v4
+            env:
+                GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+            with:
+                prerelease: true
+                tag: ${{ vars.GITHUB_RUN_ID }}
+                title: Crux Beta | ${{vars.GITHUB_RUN_ATTEMPT}} | ${{ vars.GITHUB_RUN_ID }}
+                artifact: crux-beta.zip
+                body: Auto Build | ${{ vars.GITHUB_RUN_ID }}</br>Commit ${{ github.sha }}</br>Branch ${{ github.ref }}
+
+
